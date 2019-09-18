@@ -8,19 +8,22 @@ import {
   HeaderGlobalAction,
   SkipToContent,
 } from 'carbon-components-react/lib/components/UIShell';
-const TutorialHeader = () => (
+import { Link } from 'react-router-dom';
+const ServeHeader = () => (
   <Header aria-label="Carbon Tutorial">
     <SkipToContent />
-    <HeaderName href="/" prefix="NCAT">
-      Serve U
-    </HeaderName>
+    <HeaderName element={Link} to="/" prefix="NCAT">
+  Serve U
+</HeaderName>
     <HeaderNavigation aria-label="Carbon Tutorial">
-      <HeaderMenuItem href="/repos">Home</HeaderMenuItem>
-      <HeaderMenuItem href="/repos">About Us</HeaderMenuItem>
-      <HeaderMenuItem href="/repos">Organizations</HeaderMenuItem>
-      <HeaderMenuItem href="/repos">Students</HeaderMenuItem>
+      <HeaderMenuItem href="/Home">Home</HeaderMenuItem>
+      <HeaderMenuItem element={Link} to="/About-Us">
+   About Us
+</HeaderMenuItem>
+      <HeaderMenuItem href="/Orgs">Organizations</HeaderMenuItem>
+      <HeaderMenuItem href="/Students">Students</HeaderMenuItem>
     </HeaderNavigation>
     <HeaderGlobalBar />
   </Header>
 );
-export default TutorialHeader;
+export default ServeHeader;
