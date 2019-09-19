@@ -1,5 +1,16 @@
+
 .App {
-  text-align: center;
+  
+ 
+  
+}
+.row-1{
+  background-image: url("ServeU.png");
+}
+div.grid-container{
+  margin: 0;
+  max-width: 1251px;
+  padding: 0;
 }
 
 .App-logo {

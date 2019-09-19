@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import serveu from './ServeU.png';
+import './app.scss';
+import ServeHeader from './components/Header/header';
+import { Button,
+  Content,
+  Header,
+  HeaderName,
+  HeaderNavigation,
+  HeaderMenuItem,
+  HeaderGlobalBar,
+  HeaderGlobalAction,
+  SkipToContent} from 'carbon-components-react';
+  import { Route, Switch } from 'react-router-dom';
+import LandingPage from './content/Home/home-page';
+import AboutPage from './content/About Us/about-us';
+
+
+
+  class App extends Component {
+    render() {
+      return (
+        <>
+          <ServeHeader />
+          <Content>
+          <Switch>
+  <Route exact path="/" component={LandingPage} />
+  <Route exact path="/About-Us" component={AboutPage} />
+  
+</Switch>
+          </Content>
+        </>
+      );
+    }
+  }
 
 export default App;
