@@ -8,11 +8,7 @@
     "carbon-components": "^10.6.1",
     "carbon-components-react": "^7.6.1",
     "carbon-icons": "^7.0.7",
-<<<<<<< HEAD
-    "mysql": "github:mysqljs/mysql",
-=======
     "mysql": "^2.17.1",
->>>>>>> 002768adb6b63f24c6794530b201e1b634e0373e
     "node-sass": "^4.12.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
