@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import serveu from './ServeU.png';
+
 import './app.scss';
 import ServeHeader from './components/Header/header';
 import { Button,
