@@ -10,10 +10,10 @@ const LandingPage = () => {
 
  
 <div class="bx--vid"> 
-<img src={require('./servej.gif')} alt="Serve" class="center"></img>
+<img src={require('./servej.gif')} alt="Serve" class="center" width = "750" ></img>
   </div>
 
-  </div>
+  
   <div class="bx--rows">
   
   </div>
@@ -30,7 +30,7 @@ const LandingPage = () => {
  </footer> 
  </div>
 
-
+ </div>
        {/* <div className="bx--row">
         <div class="bx--rows">
   
