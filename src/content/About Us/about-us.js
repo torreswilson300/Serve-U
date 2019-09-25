@@ -61,22 +61,25 @@ const AboutPage = () => {
   <div class="bx--rows">
   To provide the most actionable community service website for the North Carolina A&T community. 
     
+  
   </div>
 
   <div class="bx--social">
     <p>Connect with us today!  </p> 
-  <SocialIcon url="http://twitter.com/jaketrent" />
+  <SocialIcon url="http://twitter.com/" />
   <SocialIcon url="http://snapchat.com/" />
-  <SocialIcon url="http://linkedin.com/janiahenderson" />
-  <SocialIcon url="http://instagram.com/niaasiel" />
+  <SocialIcon url="http://linkedin.com/" />
+  <SocialIcon url="http://instagram.com/" />
   </div>
 
   <div class = "bx--footer">
  <footer>
- <p>Email: <a href="mailto:serveu@gmail.com">
-  serveu@gmail.com</a></p>
+ <p>Email ServeU: <a href="mailto:serveu@gmail.com">
+  serveu@gmail.com</a>, or call 1‑800‑MY‑SERVE for help.</p>
 
-  <p> ©2019 ServeU Corporations </p>
+  <p> ©2019 ServeU Corporations. All rights reserved. </p>
+
+ 
  </footer> 
 
  </div>
