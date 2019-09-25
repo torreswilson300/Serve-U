@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const ServeHeader = () => (
   <Header aria-label="Carbon Tutorial" src="">
     <HeaderName element={Link} to="/" prefix="">
-    <img src={require('./redserve.png')}  alt="serve" width="95"  />
+    <img src={require('./redserve.png')}  alt="serve" width="110"  />
 </HeaderName>
     <HeaderNavigation aria-label="Carbon Tutorial">
       <HeaderMenuItem element={Link} to="/">Home</HeaderMenuItem>
