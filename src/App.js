@@ -16,6 +16,8 @@ import { Button,
 import LandingPage from './content/Home/home-page';
 import AboutPage from './content/About Us/about-us';
 import OrgPage from './content/Organizations/organization-page';
+import ContactPage from './content/Contact/contact-page'; 
+
 //import StudentPage from './content/About Us/about-us';
 
 
@@ -29,6 +31,7 @@ import OrgPage from './content/Organizations/organization-page';
   <Route exact path="/" component={LandingPage} />
   <Route exact path="/About-Us" component={AboutPage} />
   <Route exact path="/Orgs" component={OrgPage} />
+  <Route exact path="/Contact-page" component={ContactPage} />
  
   
 </Switch>
