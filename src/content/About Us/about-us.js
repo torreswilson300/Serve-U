@@ -41,27 +41,23 @@ const AboutPage = () => {
 
 
 <div class="bx--grid bx--grid--full-width">
+
   <div class="bx--row">
-    <img className="bx--col-lg-16" src={require('./communityservice.jpg')} align="middle" alt="serve"  />
-    
+    <img className="bx--col-lg-16" src={require('./communityservice.jpg')} align="middle" alt="serve"  />  
   </div>
 
   <div class="bx--rows">
   ServeU makes becoming involved in your community interactive and easy. We aim to allow individuals of the community to conveniently
   yet efficiently log service hours, access various community service events, 
-  share ideas with organizations, allow leaders to sign off and on hours, and more.
-    
+  share ideas with organizations, allow leaders to sign off and on hours, and more. 
   </div>
 
   <div class="bx--row">
     <img className="bx--col-lg-16" src={require('./serve.jpg')} align="middle" alt="serve"  />
-    
   </div>
 
   <div class="bx--rows">
   To provide the most actionable community service website for the North Carolina A&T community. 
-    
-  
   </div>
 
   <div class="bx--social">
@@ -72,16 +68,16 @@ const AboutPage = () => {
   <SocialIcon url="http://instagram.com/" />
   </div>
 
+ 
   <div class = "bx--footer">
  <footer>
+
  <p>Email ServeU: <a href="mailto:serveu@gmail.com">
   serveu@gmail.com</a>, or call 1‑800‑MY‑SERVE for help.</p>
 
-  <p> ©2019 ServeU Corporations. All rights reserved. </p>
+  <p> ©2019 ServeU Corporations. All rights reserved. </p> 
 
- 
  </footer> 
-
  </div>
 
 
