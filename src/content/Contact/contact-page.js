@@ -17,10 +17,6 @@ const ContactPage = () => {
 <div class="bx--grid bx--grid--full-width">
   
 
-  <div class="bx--rows">
-  
-  </div>
-
   
 
   <div class="bx--rows">

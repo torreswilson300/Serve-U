@@ -5,8 +5,40 @@ import { TextInput } from 'carbon-components-react';
 const LandingPage = () => {
   return (
     <div className="bx--grid bx--grid--full-width">
-        <div className="bx--row">
-        
+
+< div class = "bx--no">
+
+ 
+<div class="bx--vid"> 
+<img src={require('./servej.gif')} alt="Serve" class="center"></img>
+  </div>
+
+  </div>
+  <div class="bx--rows">
+  
+  </div>
+
+
+  <div class = "bx--footer">
+ <footer>
+
+ <p>Email ServeU: <a href="mailto:serveu@gmail.com">
+  serveu@gmail.com</a>, or call 1‑800‑MY‑SERVE for help.</p>
+
+  <p> ©2019 ServeU Corporations. All rights reserved. </p> 
+
+ </footer> 
+ </div>
+
+
+       {/* <div className="bx--row">
+        <div class="bx--rows">
+  
+  </div>
+  <div class="bx--vid">
+  <img className="bx--col-lg-16" src={require('./servej.gif')} align="middle" alt="serve"   /> 
+  </div>
+   
         
     </div>
     
@@ -62,7 +94,7 @@ const LandingPage = () => {
       <div className="bx--col-sm-1">1/4</div>
       <div className="bx--col-sm-1">1/4</div>
       <div className="bx--col-sm-1">1/4</div>
-    </div>
+    </div> */}
   </div>
   );
 };
