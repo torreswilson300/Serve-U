@@ -15,7 +15,8 @@ import { Button,
   import { Route, Switch } from 'react-router-dom';
 import LandingPage from './content/Home/home-page';
 import AboutPage from './content/About Us/about-us';
-
+import OrgPage from './content/Organizations/organization-page';
+//import StudentPage from './content/About Us/about-us';
 
 
   class App extends Component {
@@ -27,6 +28,8 @@ import AboutPage from './content/About Us/about-us';
           <Switch>
   <Route exact path="/" component={LandingPage} />
   <Route exact path="/About-Us" component={AboutPage} />
+  <Route exact path="/Orgs" component={OrgPage} />
+ 
   
 </Switch>
           </Content>

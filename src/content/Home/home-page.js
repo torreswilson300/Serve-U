@@ -6,26 +6,34 @@ const LandingPage = () => {
   return (
     <div className="bx--grid bx--grid--full-width">
         <div className="bx--row">
-        <img className="bx--col-lg-16" src={require('./ServeU.png')} align="middle" alt="serve" width="200" />
+        
+        
     </div>
     
       
     
     <div className="bx--row">
+    <div className="bx--col-lg-16">
      <TextInput  
      labelText="First Name"
      placeHolderText="First Name"
      />
      </div>
+     </div>
      
      <div className="bx--row">
-        <TextInput
-          required
-          labelText="Last Name"
-          placeHolderText="Last Name"
-              />
+       
+     <div className="bx--col-lg-16">
+     <TextInput  
+     labelText="Last Name"
+     placeHolderText="Last Name"
+     />
+     </div>
 </div>
 <div className="bx--row">
+<div className="bx--col-lg-16">
+    
+     
 
         <TextInput
           type="email"
@@ -34,10 +42,11 @@ const LandingPage = () => {
           placeHolderText="Email"
           
         />
+        </div>
 </div>
 
 <div className="bx--row">
-
+<div className="bx--col-lg-16">
         <TextInput
           type="password"
           required
@@ -45,6 +54,7 @@ const LandingPage = () => {
           placeHolderText="Password"
           
         />
+        </div>
 </div>
     
     <div className="bx--row">
