@@ -18,7 +18,7 @@ import AboutPage from './content/About Us/about-us';
 import OrgPage from './content/Organizations/organization-page';
 import ContactPage from './content/Contact/contact-page'; 
 
-//import StudentPage from './content/About Us/about-us';
+import ServeFooter from './components/Footer/footer';
 
 
   class App extends Component {
@@ -36,6 +36,7 @@ import ContactPage from './content/Contact/contact-page';
   
 </Switch>
           </Content>
+          <ServeFooter/>
         </>
       );
     }
