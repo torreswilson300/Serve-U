@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput } from 'carbon-components-react';
+
 
 
 const LandingPage = () => {
@@ -19,16 +19,7 @@ const LandingPage = () => {
   </div>
 
 
-  <div class = "bx--footer">
- <footer>
-
- <p>Email ServeU: <a href="mailto:serveu@gmail.com">
-  serveu@gmail.com</a>, or call 1‑800‑MY‑SERVE for help.</p>
-
-  <p> ©2019 ServeU Corporations. All rights reserved. </p> 
-
- </footer> 
- </div>
+  
 
  </div>
        {/* <div className="bx--row">
