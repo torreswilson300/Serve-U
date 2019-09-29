@@ -2,7 +2,6 @@
 
 import './about-us.scss';
 import './aboutus.php';
-import ReactDOM from 'react-dom';
 import { SocialIcon } from 'react-social-icons';
 import React from 'react';
 const AboutPage = () => {

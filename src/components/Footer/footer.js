@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ServeFooter = () => (
-    <div class = "bx--footer">
+    <div className = "bx--footer">
     <footer>
    
     <p>Email ServeU: <a href="mailto:serveu@gmail.com">

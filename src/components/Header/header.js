@@ -5,8 +5,6 @@ import {
   HeaderNavigation,
   HeaderMenuItem,
   HeaderGlobalBar,
-  HeaderGlobalAction,
-  SkipToContent,
 } from 'carbon-components-react/lib/components/UIShell';
 import { Link } from 'react-router-dom';
 const ServeHeader = () => (

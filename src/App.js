@@ -3,15 +3,9 @@ import React, { Component } from 'react';
 
 import './app.scss';
 import ServeHeader from './components/Header/header';
-import { Button,
-  Content,
-  Header,
-  HeaderName,
-  HeaderNavigation,
-  HeaderMenuItem,
-  HeaderGlobalBar,
-  HeaderGlobalAction,
-  SkipToContent} from 'carbon-components-react';
+import { 
+  Content
+  } from 'carbon-components-react';
   import { Route, Switch } from 'react-router-dom';
 import LandingPage from './content/Home/home-page';
 import AboutPage from './content/About Us/about-us';
