@@ -45,6 +45,7 @@ const OrgPage = () => {
                         <TextInput
                             className="form-input"
                             id="Org-Email"
+                            type="email"
                             labelText="Organization Email"
                             placeholder="Organization Email"
                         />
