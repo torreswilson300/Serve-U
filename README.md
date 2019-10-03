@@ -1,5 +1,5 @@
 # Serve-U
-This is a web application that will be used to keep track of community service hours and opportunities.
+This is a web application that will be used to keep track of community service hours and opportunities for N.C. A&T students and organizations.
 
 ## `React`
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
