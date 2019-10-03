@@ -21,7 +21,6 @@ const ContactPage = () => {
   
   <div class="bx--rows">
   How can we help you? 
-
   <Form className="contact-form">
                         <TextInput
                             className="form-input"
@@ -46,33 +45,7 @@ const ContactPage = () => {
                     </Form>
   </div>
 
-  <div class="bx--rows">
-                <div className="bx--offset-lg-1 bx--col-lg-8" align = "middle" >
-                    <Form className="contact-form">
-                        <TextInput
-                            className="form-input"
-                            id="Contact-Name"
-                            labelText="Name (Required)"
-                           
-                        />
-
-
-
-                        <TextInput
-                            className="form-input"
-                            id="Email"
-                            labelText="Email address"
-                          
-                        />
-                       
-                        <TextArea
-                            labelText="Message"
-                            placeholder="In a few words, describe your organization..."></TextArea>
-                        <Button className="button"> SUBMIT</Button>
-                    </Form>
-
-                </div>
-                </div>
+ 
 
   <div class="bx--rows">
    
