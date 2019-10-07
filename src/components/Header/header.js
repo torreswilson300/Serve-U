@@ -17,7 +17,9 @@ const ServeHeader = () => (
       <HeaderMenuItem element={Link} to="/About-Us">About Us</HeaderMenuItem>
       <HeaderMenuItem  element={Link} to="/Orgs">Organizations</HeaderMenuItem>
       <HeaderMenuItem  element={Link} to="/Students">Students</HeaderMenuItem>
+      <HeaderMenuItem   element={Link} to = "/Social-page">Social</HeaderMenuItem>
       <HeaderMenuItem  element={Link} to="/Contact-page">Contact</HeaderMenuItem>
+      
     </HeaderNavigation>
     <HeaderGlobalBar />
   </Header>
