@@ -9,11 +9,6 @@ const ContactPage = () => {
 
   <title> Serve U - Contact </title>
 
- 
-
-
-
-
 <div class="bx--grid bx--grid--full-width">
   
 <div class="bx--row">
@@ -22,6 +17,7 @@ const ContactPage = () => {
   
   <div class="bx--rows">
   How can we help you? 
+ 
   <Form className="contact-form">
                         <TextInput
                             className="form-input"
@@ -44,10 +40,10 @@ const ContactPage = () => {
                             placeholder="In a few words, describe your organization..."></TextArea>
                         <Button className="button"> SUBMIT</Button>
                     </Form>
-  </div>
 
 
- 
+
+                    </div>
 
   <div class="bx--rows">
    
@@ -56,15 +52,6 @@ const ContactPage = () => {
   <div class="bx--social">
    
   </div>
-
-  
-  
-
-
- 
-  
-
-
 
 </div>
 
