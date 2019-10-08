@@ -1,6 +1,4 @@
 import React from 'react';
-import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
-
 
 const LandingPage = () => {
   return (
@@ -27,14 +25,29 @@ Our Campus Partner Organizations
   </div>
 
   <div class="bx--partner"> 
-<img src={require('./FRN.png')} alt="Serve" class="center" width = "300"></img>
-<img src={require('./acm.png')} alt="Serve" class="center" width = "300"></img>
-<img src={require('./NSBE.png')} alt="Serve" class="center" width = "300"></img>
+
+  <a href="https://www.ncatdining.com/explore/food-recovery">
+<img src={require('./FRN.png')} alt="Serve" class="center" width = "300"></img> </a> 
+
+
+<a href="https://orgsync.com/5904/chapter"><img src={require('./acm.png')} alt="Serve" class="center" width = "300"></img></a>
+
+<a href="https://orgsync.com/5919/chapter"><img src={require('./NSBE.png')} alt="Serve" class="center" width = "300"></img></a>
 <img src={require('./sclc.png')} alt="Serve" class="center" width = "300"></img>
 
 
+
+
   </div>
+  <div class="bx--rows">
   
+  <a href="https://orgsync.com/175004/chapter">
+    <img src={require('./nsls.png')} alt="Serve" class="center" width = "300"></img> </a>
+
+  <a href="https://orgsync.com/5916/chapter"><img src={require('./ise.png')} alt="Serve"  width = "500"></img> </a> 
+
+  <img src={require('./swe.png')} alt="Serve"  width = "500"></img>
+  </div>
 
  </div>
        
