@@ -1,45 +1,35 @@
-.bx-row{
-    width: 100vw;
+.bx-row {
+  width: 100vw;
 }
 
-
-.bx--vid{
- 
-  display: block; 
+.bx--vid {
+  display: block;
   margin-left: auto;
   margin-right: auto;
-   width: 50;
-   text-align: center;
-   color: white;
-
+  width: 50;
+  text-align: center;
+  color: white;
 }
 
-.bx--no{
+.bx--no {
+  background-color: black;
+  border: 15px solid black;
+  border-style: ridge;
+  color: white;
+}
 
-    background-color: black; 
-    border: 15px solid black ;
-    border-style: ridge;
-    color: white;
-    }
+.bx--footer {
+  color: gray;
+  background-color: black;
+  border: 20px solid black;
+  text-align: center;
+  font-size: 10px;
+}
 
+.bx--rows {
+  color: white;
+}
 
-    .bx--footer{
-        color: gray;   
-        background-color:black;
-        border: 20px solid black; 
-        text-align: center;
-        font-size: 10px;
-        
-       
-    }
-    
-    .bx--rows{
-
-        color: white;
-    }
-
-.bx--grid--full-width{
-
-background-color: black;
-
+.bx--grid--full-width {
+  background-color: black;
 }

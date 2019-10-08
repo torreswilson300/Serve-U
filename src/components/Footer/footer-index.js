@@ -1,2 +1,2 @@
-import ServeFooter from './footer';
+import ServeFooter from "./footer";
 export default ServeFooter;
