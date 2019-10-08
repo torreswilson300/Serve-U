@@ -1,2 +1,2 @@
-import SocialPage from './SocialPage';
+import SocialPage from "./SocialPage";
 export default SocialPage;
