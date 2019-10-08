@@ -1,64 +1,56 @@
 //@import 'styles/colors'; // assuming a styles directory under src/, where _colors.scss partial file exists.
 //@import 'nprogress/nprogress'; // importing a css file from the nprogress node module
 
-
 /*.about-us {
     background-image: url(./communityservice.jpg);
 }
 */
-.bx--grid{
-    padding: 0;
-    margin: 0;
-    outline: 0; 
-    vertical-align: baseline;
-    background: 0 0;
+.bx--grid {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: 0 0;
 }
-.border-radiusImportant{
-    border-radius: 5px !important;
-  } 
-.bx--rows{
-    letter-spacing: .5px; 
-    padding: 0;
-    margin: 50;
-    font-display: fallback;
-    font-size-adjust: inherit;   
-    color: white;  
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
-    text-align: center;
-    background-color: black; 
-    font-size: 46px;
-    font-weight: bold;
-    border: 15px solid black;
-    border-style: ridge;    
+.border-radiusImportant {
+  border-radius: 5px !important;
 }
-
-
-.bx--social{  
-    color: white;  
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;  
-    text-align: center;
-    background-color:black; 
-    font-size: 20px;
-    font-weight: bold; 
-    letter-spacing: .5px;
-    word-spacing: 5px;   
-    border: 43px solid black;
-    //font-style: italic;
+.bx--rows {
+  letter-spacing: 0.5px;
+  padding: 0;
+  margin: 50;
+  font-display: fallback;
+  font-size-adjust: inherit;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  text-align: center;
+  background-color: black;
+  font-size: 46px;
+  font-weight: bold;
+  border: 15px solid black;
+  border-style: ridge;
 }
 
-
-.bx--footer{
-    color: gray;   
-    background-color:black;
-    border: 20px solid black; 
-    text-align: center;
-    font-size: 10px;
-    
-   
+.bx--social {
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  text-align: center;
+  background-color: black;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  word-spacing: 5px;
+  border: 43px solid black;
+  //font-style: italic;
 }
 
-
-
+.bx--footer {
+  color: gray;
+  background-color: black;
+  border: 20px solid black;
+  text-align: center;
+  font-size: 10px;
+}
 
 /*h1 {
 color: white; 
@@ -85,5 +77,4 @@ june {
     
     
     }
-*/ 
-    
+*/

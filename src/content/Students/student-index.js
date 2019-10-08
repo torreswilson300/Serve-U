@@ -1,2 +1,2 @@
-import StudentPage from './student-page';
+import StudentPage from "./student-page";
 export default StudentPage;

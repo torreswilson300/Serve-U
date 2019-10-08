@@ -1,2 +1,2 @@
-import OrgPage from './organization-page';
+import OrgPage from "./organization-page";
 export default OrgPage;
