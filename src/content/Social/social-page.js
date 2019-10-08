@@ -15,8 +15,11 @@ const SocialPage = () => {
   sourceType="timeline"
   screenName="ServeUncat"
   theme="dark"
-  options={{height: 500}}
+  options={{height: 800, width: 800}}
+
   transparent
+  class="center"
+
 />
 
 </div> 
