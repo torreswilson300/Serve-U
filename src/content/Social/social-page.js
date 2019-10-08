@@ -13,10 +13,10 @@ const SocialPage = () => {
 <div className = "Timeline">
 <TwitterTimelineEmbed
   sourceType="timeline"
-  id="539487832448843776"
+  screenName="ServeUncat"
   theme="dark"
-  options={{height: 400}}
-  class = "center"
+  options={{height: 500}}
+  transparent
 />
 
 </div> 
