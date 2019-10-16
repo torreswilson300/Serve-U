@@ -62,7 +62,6 @@ onSubmit = () => {
         </div>
       </div>
 
-
       <div className="bx--row" id="row-3">
         <div className="bx--offset-lg-1 bx--col-lg-8">
         <Form className="org-form">
@@ -123,5 +122,4 @@ onSubmit = () => {
 }
   
 export default OrgPage;
-
 
