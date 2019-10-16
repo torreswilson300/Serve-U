@@ -8,6 +8,8 @@ const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 const useMountEffect = (fun) => useEffect(fun, [])
 
 const StudentPage = () => {
+  
+  
   const myRef = useRef(null)
 
 	useMountEffect(() => scrollToRef(myRef))
