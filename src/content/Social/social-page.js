@@ -39,7 +39,10 @@ const SocialPage = () => {
 
    
 <div className="selfCenter">
-<TwitterFollowButton screenName="ServeUncat" options={{size: 'large'}} />
+<TwitterFollowButton screenName="ServeUncat" options={{size: 'large'}} />  <TwitterShareButton url="www.serveu.com" options={{
+    text: '#serveu',
+    via: 'serveuncat',
+   }} />
 </div>
 
 
