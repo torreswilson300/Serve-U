@@ -1,4 +1,11 @@
 import React from 'react';
+import {
+  TextInput,
+  Button,
+  Form,
+  TextArea,
+  HeaderMenuItem
+} from "carbon-components-react";
 
 const LandingPage = () => {
   return (
@@ -14,10 +21,25 @@ const LandingPage = () => {
 <img src={require('./servej.gif')} alt="Serve" class="center" width = "750" ></img>
   </div>
 
-  <div class="bx--rows">
-  
+  <div class="bx--runs">
+ JOIN SERVEU TODAY
+  </div>
+
+  <div class="bx--runss">
+
+  <  Button className="bx--btn bx--btn--danger " >
+    
+              STUDENT SIGN UP 
+              </Button>
+
+              <  Button className="bx--btn " >
+    
+              ORG SIGN UP 
+              </Button>
 
   </div>
+
+
   <div class="bx--rows">
   
 Our Campus Partner Organizations
