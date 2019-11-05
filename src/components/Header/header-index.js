@@ -1,2 +1,2 @@
-import header from "./header";
-export default header;
+import ServeHeader from "./header";
+export default ServeHeader;
