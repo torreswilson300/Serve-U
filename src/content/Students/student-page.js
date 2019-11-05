@@ -10,6 +10,12 @@ import "./student-page.scss";
 import { Route, Link } from "react-router-dom";
 
 class StudentPage extends Component {
+
+  constructor(props){  
+    super(props)
+        this.myRef=null    
+    }
+  
   state = {
     demos: [],
     demo: {
@@ -53,6 +59,7 @@ getUsers = _ =>{
                 Click Here!
               </p>
               <Button
+              ref={ (ref) => this.myRef=ref }
                 id="top-left2"
                 className="bx--btn bx--btn--danger bx--btn--sm"
               >
@@ -146,7 +153,10 @@ getUsers = _ =>{
         </div>
       </div>
     );
+    
   }
+
+  scrollToMyRef = () => window.scrollTo(0, this.myRef.offsetTop)
 }
 
 export default StudentPage;

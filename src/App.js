@@ -12,6 +12,7 @@ import SocialPage from "./content/Social/social-page";
 import StudentPage from "./content/Students/student-page";
 
 import ServeFooter from "./components/Footer/footer";
+import SignInPage from "./content/Sign In Landing Page/sign-in";
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
           </Switch>
         </Content>
         <ServeFooter />
+        
       </>
     );
   }
