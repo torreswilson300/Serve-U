@@ -6,6 +6,7 @@ import {
   TextArea,
   HeaderMenuItem
 } from "carbon-components-react";
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
@@ -24,6 +25,7 @@ const LandingPage = () => {
   <div class="bx--runs">
  JOIN SERVEU TODAY
   </div>
+
 
   <div class="bx--runss">
 
