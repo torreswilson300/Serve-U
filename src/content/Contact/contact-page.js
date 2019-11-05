@@ -35,7 +35,7 @@ const ContactPage = () => {
 
             <TextArea
               labelText="Message"
-              placeholder="In a few words, describe your organization..."
+              placeholder="Please leave a message..."
             ></TextArea>
             <Button className="button">SUBMIT</Button>
           </Form>
