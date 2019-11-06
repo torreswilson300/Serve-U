@@ -1,14 +1,19 @@
-import React from "react";
+import React, {Component} from "react";
 import {
   Header,
   HeaderName,
   HeaderNavigation,
   HeaderMenuItem,
-  HeaderGlobalBar
+  HeaderGlobalBar,
+  HeaderGlobalAction,
 } from "carbon-components-react/lib/components/UIShell";
+import UserAvatar20 from '@carbon/icons-react/lib/user--avatar/20';
 import { Link } from "react-router-dom";
-const ServeHeader = () => (
+class ServeHeader extends Component {
+  render(){
+    return(
   <Header aria-label="Carbon Tutorial" src="">
+    
     <HeaderName element={Link} to="/" prefix="">
       <img src={require("./redserve.png")} alt="serve" width="110" />
     </HeaderName>
@@ -19,12 +24,7 @@ const ServeHeader = () => (
       <HeaderMenuItem element={Link} to="/About-Us">
         About Us
       </HeaderMenuItem>
-      <HeaderMenuItem element={Link} to="/Orgs">
-        Organizations
-      </HeaderMenuItem>
-      <HeaderMenuItem element={Link} to="/Students">
-        Students
-      </HeaderMenuItem>
+      
       <HeaderMenuItem element={Link} to="/Social-page">
         Social
       </HeaderMenuItem>
@@ -32,7 +32,15 @@ const ServeHeader = () => (
         Contact
       </HeaderMenuItem>
     </HeaderNavigation>
-    <HeaderGlobalBar />
+    <HeaderGlobalBar>
+  <HeaderGlobalAction aria-label="User Avatar">
+    <UserAvatar20 > profile </UserAvatar20>
+  </HeaderGlobalAction>
+  
+</HeaderGlobalBar>
+    
   </Header>
-);
+  );
+}
+}
 export default ServeHeader;
