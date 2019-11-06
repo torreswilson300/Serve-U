@@ -28,7 +28,7 @@ getUsers = _ =>{
 
 
 onSubmit = () => {
-  alert("Org has been added!")
+  alert("Organization Has Been Successfully Added!")
 
   const { demoorg } = this.state;
   fetch(`http://localhost:4000/orgs/addOrg?Username=${this.state.Username}&OrgName=${this.state.OrgName}&Email=${this.state.Email}&Password=${this.state.Password}&Description=${this.state.Description}`)
@@ -54,7 +54,7 @@ onSubmit = () => {
       <div className="bx--row" id="row-2">
         <div className="bx--offset-lg-2 bx--col-lg-12">
           <p className="p-row-2">
-            Organizations play a huge role in community service. They make sure
+            Organizations play a huge role in community service by making sure
             that students have opportunities to help their local community. The
             purpose of the organization is to positively guide students and
             amplify their motive to do what is right.
