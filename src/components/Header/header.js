@@ -31,7 +31,19 @@ class ServeHeader extends Component {
           <HeaderMenuItem element={Link} to="/Contact-page">
             Contact
           </HeaderMenuItem>
+          
         </HeaderNavigation>
+        <HeaderNavigation aria-label="Carbon Tutorial" id="left-side"align="left">
+        <HeaderMenuItem element={Link} to="/SignIn">
+            {" "}
+            Login{" "}
+          </HeaderMenuItem>
+          <HeaderMenuItem element={Link} to="/Profile">
+        Profile
+      </HeaderMenuItem>
+          
+        </HeaderNavigation>
+        
         <HeaderGlobalBar>
           <HeaderGlobalAction
             aria-label="User Avatar"
@@ -40,13 +52,7 @@ class ServeHeader extends Component {
           >
             <UserAvatar20> </UserAvatar20>
           </HeaderGlobalAction>
-          <HeaderMenuItem element={Link} to="/SignIn">
-            {" "}
-            Login{" "}
-          </HeaderMenuItem>
-          <HeaderMenuItem element={Link} to="/Profile">
-        Profile
-      </HeaderMenuItem>
+          
         </HeaderGlobalBar>
       </Header>
     );
