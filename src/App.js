@@ -13,6 +13,7 @@ import StudentPage from "./content/Students/student-page";
 
 import ServeFooter from "./components/Footer/footer";
 import SignInPage from "./content/Sign In Landing Page/sign-in";
+import Profile from "./content/Profile/profile";
 
 class App extends Component {
   
@@ -31,6 +32,7 @@ class App extends Component {
             <Route exact path="/Contact-page" component={ContactPage} />
             <Route exact path="/Social-page" component={SocialPage} />
             <Route exact path="/SignUp/SignIn" component={SignInPage} />
+            <Route exact path="/Profile" component={Profile} />
           </Switch>
         </Content>
         <ServeFooter />
