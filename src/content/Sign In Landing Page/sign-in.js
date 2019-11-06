@@ -37,7 +37,7 @@ class SignInPage extends Component{
 
       <div class="bx--rows"
       >
-      <div class="bx--rows">Student Sign-Up</div>
+      <div class="bx--rows">Student Login</div>
         <Form className="org-form"
         >
                   <TextInput
@@ -56,13 +56,13 @@ class SignInPage extends Component{
                     id="Org-Pass"
                     type="password"
                     required
-                    labelText="Student Password"
+                    labelText="Password"
                     placeholder="Password"
                   />
 
                   <Button onClick={() => this.onSubmit()} className="button">
                     {" "}
-                    Confirm Student Sign Up{" "}
+                    Login{" "}
                   </Button>
                 </Form>
       </div>
