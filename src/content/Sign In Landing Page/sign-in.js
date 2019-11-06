@@ -62,7 +62,7 @@ class SignInPage extends Component{
 
                   <Button onClick={() => this.onSubmit()} className="button">
                     {" "}
-                    Confirm Organization Sign Up{" "}
+                    Confirm Student Sign Up{" "}
                   </Button>
                 </Form>
       </div>

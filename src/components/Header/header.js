@@ -33,6 +33,9 @@ class ServeHeader extends Component {
       </HeaderMenuItem>
     </HeaderNavigation>
     <HeaderGlobalBar>
+  <HeaderGlobalAction aria-label="User Avatar" element={Link} to="/Profile">
+    <UserAvatar20 >  </UserAvatar20>
+  </HeaderGlobalAction>
       <HeaderMenuItem element={Link} to="/SignIn"> Login </HeaderMenuItem>
   
 </HeaderGlobalBar>
