@@ -21,7 +21,17 @@ const SocialPage = () => {
   
     <title> Serve U - Social </title>
 
+   
+    <div class="bx--bl">KEEPING UP WITH SERVEU!</div> 
+   
+   
+   
+   
     < div class = "bx--no">
+    <TwitterShareButton url="www.serveu.com" options={{
+    text: '#serveu',
+    via: 'serveuncat',
+   }} />
 <div className = "Timeline">
 <TwitterTimelineEmbed
   sourceType="timeline"
@@ -38,20 +48,20 @@ const SocialPage = () => {
 
 
    
-<div className="selfCenter">
-<TwitterFollowButton screenName="ServeUncat" options={{size: 'large'}} />  <TwitterShareButton url="www.serveu.com" options={{
-    text: '#serveu',
-    via: 'serveuncat',
-   }} />
+
+
+<div class="bx--row">
+          <img
+            className="bx--col-lg-16"
+            src={require("./cben.png")}
+            align="middle"
+            alt="serve"
+          />
+        </div>
+
+        <div className="selfCenter">
+<TwitterFollowButton screenName="ServeUncat" options={{size: 'large'}} />  
 </div>
-
-
-
-
-
-
-
-
 
 
 </div>
