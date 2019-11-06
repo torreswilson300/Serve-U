@@ -31,10 +31,16 @@ class LandingPage extends Component {
         <div class="bx--runs">JOIN SERVEU TODAY</div>
 
         <div class="bx--runss">
-          <Link to="/SignUp/SignIn" >STUDENT SIGN UP</Link>
+        
 
-          <Button className="bx--btn ">ORG SIGN UP</Button>
+
+
+         <h4> <Link to="/Students" > STUDENT SIGN UP </Link>  or  <Link to="/Orgs" > ORGANIZATION SIGN UP </Link></h4>
+       
+       
         </div>
+
+        
 
         <div class="bx--rows">Our Campus Partner Organizations</div>
 
