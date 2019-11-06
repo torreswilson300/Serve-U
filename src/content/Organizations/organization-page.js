@@ -38,32 +38,12 @@ onSubmit = () => {
   render(){
   return (
     <div className="bx--grid bx--grid--full-width">
-      <div className="bx--row" id="row-1">
-        <img
-          className="bx--col-lg-16"
-          src={require("./orgpic.jpg")}
-          height="600"
-          align="middle"
-          alt="serve"
-        />
-        <div className="top-left">
-          Organizations
-          <p className="top-left-1">Community. Team Work. Commitment. </p>
-        </div>
-      </div>
-      <div className="bx--row" id="row-2">
-        <div className="bx--offset-lg-2 bx--col-lg-12">
-          <p className="p-row-2">
-            Organizations play a huge role in community service by making sure
-            that students have opportunities to help their local community. The
-            purpose of the organization is to positively guide students and
-            amplify their motive to do what is right.
-          </p>
-        </div>
-      </div>
+     
 
       <div className="bx--row" id="row-3">
+     
         <div className="bx--offset-lg-1 bx--col-lg-8">
+        <div class="bx--rows">Organization Sign-Up</div>
         <Form className="org-form">
             <TextInput
                 value = {this.state.Username}

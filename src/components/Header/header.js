@@ -1,47 +1,55 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   Header,
   HeaderName,
   HeaderNavigation,
   HeaderMenuItem,
   HeaderGlobalBar,
-  HeaderGlobalAction,
+  HeaderGlobalAction
 } from "carbon-components-react/lib/components/UIShell";
-import UserAvatar20 from '@carbon/icons-react/lib/user--avatar/20';
+import UserAvatar20 from "@carbon/icons-react/lib/user--avatar/20";
 import { Link } from "react-router-dom";
 class ServeHeader extends Component {
-  render(){
-    return(
-  <Header aria-label="Carbon Tutorial" src="">
-    
-    <HeaderName element={Link} to="/" prefix="">
-      <img src={require("./redserve.png")} alt="serve" width="110" />
-    </HeaderName>
-    <HeaderNavigation aria-label="Carbon Tutorial">
-      <HeaderMenuItem element={Link} to="/">
-        Home
+  onClick() {}
+  render() {
+    return (
+      <Header aria-label="Carbon Tutorial" src="">
+        <HeaderName element={Link} to="/" prefix="">
+          <img src={require("./redserve.png")} alt="serve" width="110" />
+        </HeaderName>
+        <HeaderNavigation aria-label="Carbon Tutorial">
+          <HeaderMenuItem element={Link} to="/">
+            Home
+          </HeaderMenuItem>
+          <HeaderMenuItem element={Link} to="/About-Us">
+            About Us
+          </HeaderMenuItem>
+
+          <HeaderMenuItem element={Link} to="/Social-page">
+            Social
+          </HeaderMenuItem>
+          <HeaderMenuItem element={Link} to="/Contact-page">
+            Contact
+          </HeaderMenuItem>
+        </HeaderNavigation>
+        <HeaderGlobalBar>
+          <HeaderGlobalAction
+            aria-label="User Avatar"
+            element={Link}
+            to="/Profile"
+          >
+            <UserAvatar20> </UserAvatar20>
+          </HeaderGlobalAction>
+          <HeaderMenuItem element={Link} to="/SignIn">
+            {" "}
+            Login{" "}
+          </HeaderMenuItem>
+          <HeaderMenuItem element={Link} to="/Profile">
+        Profile
       </HeaderMenuItem>
-      <HeaderMenuItem element={Link} to="/About-Us">
-        About Us
-      </HeaderMenuItem>
-      
-      <HeaderMenuItem element={Link} to="/Social-page">
-        Social
-      </HeaderMenuItem>
-      <HeaderMenuItem element={Link} to="/Contact-page">
-        Contact
-      </HeaderMenuItem>
-    </HeaderNavigation>
-    <HeaderGlobalBar>
-  <HeaderGlobalAction aria-label="User Avatar" element={Link} to="/Profile">
-    <UserAvatar20 >  </UserAvatar20>
-  </HeaderGlobalAction>
-      <HeaderMenuItem element={Link} to="/SignIn"> Login </HeaderMenuItem>
-  
-</HeaderGlobalBar>
-    
-  </Header>
-  );
-}
+        </HeaderGlobalBar>
+      </Header>
+    );
+  }
 }
 export default ServeHeader;
