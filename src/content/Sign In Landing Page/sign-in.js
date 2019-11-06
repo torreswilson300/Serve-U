@@ -56,10 +56,38 @@ class SignInPage extends Component {
             </Form>
           </div>
 
-          <div class="bx--rows"></div>
 
-          <div class="bx--social"></div>
-        </div>
+      <div class="bx--rows"
+      >
+      <div class="bx--rows">Student Login</div>
+        <Form className="org-form"
+        >
+                  <TextInput
+                    value={this.state.Username}
+                    onChange={e => this.setState({ Username: e.target.value })}
+                    className="form-input"
+                    id="Org-Name"
+                    labelText="Username"
+                    placeholder="Username"
+                    
+                  />
+                  <TextInput
+                    value={this.state.Password}
+                    onChange={e => this.setState({ Password: e.target.value })}
+                    className="form-input"
+                    id="Org-Pass"
+                    type="password"
+                    required
+                    labelText="Password"
+                    placeholder="Password"
+                  />
+
+                  <Button onClick={() => this.onSubmit()} className="button">
+                    {" "}
+                    Login{" "}
+                  </Button>
+                </Form>
+
       </div>
     );
   }
