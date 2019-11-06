@@ -74,7 +74,7 @@ class SignInPage extends Component{
                   ></TextArea>
                   <Button onClick={() => this.onSubmit()} className="button">
                     {" "}
-                    Confirm Organization Sign Up{" "}
+                    Confirm Student Sign Up{" "}
                   </Button>
                 </Form>
               </div>
