@@ -33,6 +33,9 @@ class App extends Component {
             <Route exact path="/Social-page" component={SocialPage} />
             <Route exact path="/SignUp/SignIn" component={SignInPage} />
             <Route exact path="/Profile" component={Profile} />
+            <Route exact path="/Students" component={StudentPage}/>
+            <Route exact path="/SignIn" component={SignInPage} />
+
           </Switch>
         </Content>
         <ServeFooter />
