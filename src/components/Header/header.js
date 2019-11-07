@@ -14,8 +14,9 @@ class ServeHeader extends Component {
   render() {
     return (
       <Header aria-label="Carbon Tutorial" src="">
+        <img src={require("./redserve.png")} alt="serve" width="110" />
         <HeaderName element={Link} to="/" prefix="">
-          <img src={require("./redserve.png")} alt="serve" width="110" />
+          
         </HeaderName>
         <HeaderNavigation aria-label="Carbon Tutorial">
           <HeaderMenuItem element={Link} to="/">
@@ -31,7 +32,19 @@ class ServeHeader extends Component {
           <HeaderMenuItem element={Link} to="/Contact-page">
             Contact
           </HeaderMenuItem>
+          
         </HeaderNavigation>
+        <HeaderNavigation aria-label="Carbon Tutorial" id="left-side"align="left">
+        <HeaderMenuItem element={Link} to="/SignIn">
+            {" "}
+            Login{" "}
+          </HeaderMenuItem>
+          <HeaderMenuItem element={Link} to="/Profile">
+        Profile
+      </HeaderMenuItem>
+          
+        </HeaderNavigation>
+        
         <HeaderGlobalBar>
           <HeaderGlobalAction
             aria-label="User Avatar"
@@ -40,13 +53,7 @@ class ServeHeader extends Component {
           >
             <UserAvatar20> </UserAvatar20>
           </HeaderGlobalAction>
-          <HeaderMenuItem element={Link} to="/SignIn">
-            {" "}
-            Login{" "}
-          </HeaderMenuItem>
-          <HeaderMenuItem element={Link} to="/Profile">
-        Profile
-      </HeaderMenuItem>
+          
         </HeaderGlobalBar>
       </Header>
     );
