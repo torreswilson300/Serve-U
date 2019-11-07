@@ -14,10 +14,12 @@ class ServeHeader extends Component {
   render() {
     return (
       <Header aria-label="Carbon Tutorial" src="">
-        <img src={require("./redserve.png")} alt="serve" width="110" />
-        <HeaderName element={Link} to="/" prefix="">
-          
-        </HeaderName>
+        
+       
+          <a href="/">
+        <img element={Link} to="/" prefix=""src={require("./redserve.png")} alt="serve" width="50" />
+        </a>
+        
         <HeaderNavigation aria-label="Carbon Tutorial">
           <HeaderMenuItem element={Link} to="/">
             Home
