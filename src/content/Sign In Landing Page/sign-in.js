@@ -1,67 +1,58 @@
 import { TextInput, Button, Form, TextArea } from "carbon-components-react";
-import React, { Component } from "react";
-class SignInPage extends Component {
-  state = {
-    demos: [],
-    demoorg: {
-      Username: "Username",
-      OrgName: "OrgName",
-      Email: "Email",
-      Password: "Password",
-      Description: "Description"
+import React, {Component} from "react";
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
+class SignInPage extends Component{
+
+    
+
+
+    state = {
+      AcctType: "Student",
+      demos: [],
+      demo: {
+        Username: '',
+        Password: '',
+      }
     }
-  };
+  
 
-  onSubmit = () => {
-    alert("User has been added!");
+SELECT_ALL_STUDENTS = 'SELECT * FROM students';
+SELECT_ALL_ORGS = 'SELECT * FROM organizations';
 
-    const { demo } = this.state;
+    onSubmit = () => {
+      alert("");
+      const { demo } = this.state;
     fetch(
-      `http://localhost:4000/users/addUser?Username=${this.state.Username}&FirstName=${this.state.FirstName}&LastName=${this.state.LastName}&Email=${this.state.Email}&Password=${this.state.Password}&Description=${this.state.Description}`
+      `http://localhost:4000/students/${this.state.Username}`
     )
       .then(this.getUsers)
       .catch(err => console.error(err));
   };
 
+    handleSelect = event => {
+      this.setState({AcctType:event.target.value})
+
+    }
+
+
   render() {
     return (
-      <div className="bx--row" id="row-3">
-        <div className="bx--offset-lg-2 bx--col-lg-8">
-          <div class="bx--rows">
-            <div class="bx--rows">Student Sign-Up</div>
-            <Form className="org-form">
-              <TextInput
-                value={this.state.Username}
-                onChange={e => this.setState({ Username: e.target.value })}
-                className="form-input"
-                id="Org-Name"
-                labelText="Username"
-                placeholder="Username"
-              />
-              <TextInput
-                value={this.state.Password}
-                onChange={e => this.setState({ Password: e.target.value })}
-                className="form-input"
-                id="Org-Pass"
-                type="password"
-                required
-                labelText="Student Password"
-                placeholder="Password"
-              />
-
-              <Button onClick={() => this.onSubmit()} className="button">
-                {" "}
-                Confirm Student Sign Up{" "}
-              </Button>
-            </Form>
-          </div>
+    <div className="bx--row" id="row-3">
+    <div className="bx--offset-lg-2 bx--col-lg-8" >
 
 
-      <div class="bx--rows"
-      >
-      <div class="bx--rows">Student Login</div>
-        <Form className="org-form"
-        >
+      <div class="bx--rows"  >
+      <div class="bx--rows">ServeU Login</div>
+        <Form className="org-form">      
+                <p>select account type</p>
+                <div>
+                  <select value= {this.state.AcctType}onChange={this.handleSelect}>
+                    <option>Organization</option>
+                    <option>Student</option>
+                  </select>
+                  </div>
+              
                   <TextInput
                     value={this.state.Username}
                     onChange={e => this.setState({ Username: e.target.value })}
@@ -87,10 +78,12 @@ class SignInPage extends Component {
                     Login{" "}
                   </Button>
                 </Form>
-
+        </div>
+      </div>
       </div>
     );
-  }
+  };
 }
+
 
 export default SignInPage;
