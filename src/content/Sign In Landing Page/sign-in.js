@@ -15,6 +15,7 @@ class SignInPage extends Component{
         Password: '',
       }
     }
+  
 
 SELECT_ALL_STUDENTS = 'SELECT * FROM students';
 SELECT_ALL_ORGS = 'SELECT * FROM organizations';
@@ -28,22 +29,15 @@ SELECT_ALL_ORGS = 'SELECT * FROM organizations';
       .then(this.getUsers)
       .catch(err => console.error(err));
   };
-    
-
 
     handleSelect = event => {
       this.setState({AcctType:event.target.value})
 
     }
-    
 
 
-
-
-    render(){
-  return (
-
-
+  render() {
+    return (
     <div className="bx--row" id="row-3">
     <div className="bx--offset-lg-2 bx--col-lg-8" >
 
@@ -75,24 +69,21 @@ SELECT_ALL_ORGS = 'SELECT * FROM organizations';
                     id="Org-Pass"
                     type="password"
                     required
-                    labelText="Student Password"
+                    labelText="Password"
                     placeholder="Password"
                   />
 
                   <Button onClick={() => this.onSubmit()} className="button">
                     {" "}
-                    Confirm Organization Sign Up{" "}
+                    Login{" "}
                   </Button>
                 </Form>
+        </div>
       </div>
-
-      <div class="bx--rows"></div>
-
-      <div class="bx--social"></div>
-    </div>
-  </div>
-);
-};
+      </div>
+    );
+  };
 }
+
 
 export default SignInPage;
