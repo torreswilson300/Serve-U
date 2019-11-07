@@ -1,4 +1,4 @@
-import { TextInput, Button, Form, TextArea } from "carbon-components-react";
+import { TextInput, Button, Form } from "carbon-components-react";
 import React, {Component} from "react";
 
 
@@ -22,7 +22,6 @@ SELECT_ALL_ORGS = 'SELECT * FROM organizations';
 
     onSubmit = () => {
       alert("");
-      const { demo } = this.state;
     fetch(
       `http://localhost:4000/students/${this.state.Username}`
     )
