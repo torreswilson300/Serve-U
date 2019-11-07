@@ -1,7 +1,5 @@
 import { TextInput, Button, Form, TextArea } from "carbon-components-react";
 import React, {Component} from "react";
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
 class SignInPage extends Component{
 
     
@@ -15,12 +13,9 @@ class SignInPage extends Component{
         Password: '',
       }
     }
-  
-
-SELECT_ALL_STUDENTS = 'SELECT * FROM students';
-SELECT_ALL_ORGS = 'SELECT * FROM organizations';
 
     onSubmit = () => {
+
       alert("");
       const { demo } = this.state;
     fetch(
