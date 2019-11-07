@@ -1,5 +1,7 @@
-import { TextInput, Button, Form, TextArea } from "carbon-components-react";
+import { TextInput, Button, Form } from "carbon-components-react";
 import React, {Component} from "react";
+
+
 class SignInPage extends Component{
 
     
@@ -17,7 +19,6 @@ class SignInPage extends Component{
     onSubmit = () => {
 
       alert("");
-      const { demo } = this.state;
     fetch(
       `http://localhost:4000/students/${this.state.Username}`
     )
@@ -33,6 +34,7 @@ class SignInPage extends Component{
 
   render() {
     return (
+      <>
     <div className="bx--row" id="row-3">
     <div className="bx--offset-lg-2 bx--col-lg-8" >
 
@@ -76,6 +78,12 @@ class SignInPage extends Component{
         </div>
       </div>
       </div>
+      
+      
+      
+      </>
+
+      
     );
   };
 }
