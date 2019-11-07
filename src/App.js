@@ -10,6 +10,7 @@ import OrgPage from "./content/Organizations/organization-page";
 import ContactPage from "./content/Contact/contact-page";
 import SocialPage from "./content/Social/social-page";
 import StudentPage from "./content/Students/student-page";
+import OpportunityPage from "./content/Opportunities/opportunity-page";
 
 import ServeFooter from "./components/Footer/footer";
 import SignInPage from "./content/Sign In Landing Page/sign-in";
@@ -34,6 +35,7 @@ class App extends Component {
             <Route exact path="/SignUp/SignIn" component={SignInPage} />
             <Route exact path="/Profile" component={Profile} />
             <Route exact path="/Students" component={StudentPage}/>
+            <Route exact path="/Opportunity-page" component={OpportunityPage} />
             <Route exact path="/SignIn" component={SignInPage} />
 
           </Switch>

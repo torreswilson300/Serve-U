@@ -26,6 +26,10 @@ class ServeHeader extends Component {
             About Us
           </HeaderMenuItem>
 
+          <HeaderMenuItem element={Link} to="/Opportunity-page">
+            Opportunities 
+          </HeaderMenuItem>
+
           <HeaderMenuItem element={Link} to="/Social-page">
             Social
           </HeaderMenuItem>
