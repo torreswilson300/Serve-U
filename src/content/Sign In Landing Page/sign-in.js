@@ -1,7 +1,7 @@
 import { TextInput, Button, Form, TextArea } from "carbon-components-react";
 import React, {Component} from "react";
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+
+
 class SignInPage extends Component{
 
     
@@ -38,6 +38,7 @@ SELECT_ALL_ORGS = 'SELECT * FROM organizations';
 
   render() {
     return (
+      <>
     <div className="bx--row" id="row-3">
     <div className="bx--offset-lg-2 bx--col-lg-8" >
 
@@ -81,8 +82,12 @@ SELECT_ALL_ORGS = 'SELECT * FROM organizations';
         </div>
       </div>
       </div>
-      </div>
-      </div>
+      
+      
+      
+      </>
+
+      
     );
   };
 }

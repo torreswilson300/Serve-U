@@ -14,8 +14,9 @@ class ServeHeader extends Component {
   render() {
     return (
       <Header aria-label="Carbon Tutorial" src="">
+        <img src={require("./redserve.png")} alt="serve" width="110" />
         <HeaderName element={Link} to="/" prefix="">
-          <img src={require("./redserve.png")} alt="serve" width="110" />
+          
         </HeaderName>
         <HeaderNavigation aria-label="Carbon Tutorial">
           <HeaderMenuItem element={Link} to="/">
