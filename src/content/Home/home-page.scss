@@ -54,11 +54,49 @@
   background-color: black;
 }
 
-a:link, a:visited {
+
+
+.orgs{
+  background-color: blue;
+  text-decoration: none;
+  color: white;
+  padding: 15px 25px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold; 
+}
+
+.orgs:hover{
+  background-color:green;
+}
+
+
+.orgs:active{
+  background-color: gray; 
+}
+
+
+.student{
+
+  background-color: blue;
+  text-decoration: none;
+  color: white;
+  padding: 15px 25px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold; 
+}
+.student:hover{
+  background-color:green;
+}
+
+.student:active{
+  background-color: black; 
+}
+/*a:link, a:visited {
   background-color: #333333;
   color: white;
   padding: 15px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-}
+} */ 
+ 
