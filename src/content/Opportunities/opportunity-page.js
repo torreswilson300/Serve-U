@@ -26,6 +26,7 @@ const OpportunityPage = () => {
       
 
         <div class="bx--rows">
+            
         
         </div>
 

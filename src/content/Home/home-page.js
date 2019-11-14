@@ -35,7 +35,7 @@ class LandingPage extends Component {
 
 
 
-         <h4> <Link to="/Students" > STUDENT SIGN UP </Link>  or  <Link to="/Orgs" > ORGANIZATION SIGN UP </Link></h4>
+         <h4> <Link className ='student' to="/Students" > STUDENT SIGN UP </Link>   or   <Link className ='orgs' to="/Orgs" > ORGANIZATION SIGN UP </Link></h4>
        
        
         </div>

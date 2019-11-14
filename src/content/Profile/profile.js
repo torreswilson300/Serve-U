@@ -1,26 +1,21 @@
 import React, { Component } from "react";
+import {Button} from "carbon-components-react";
 import "./profile.scss";
-
-function WarningBanner(props) {
-  if (!props.warn) {
-    return null;
-  }
-
-  return <div className="warning">Warning!</div>;
-}
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showWarning: true };
     this.handleToggleClick = this.handleToggleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  WarningBanner(props) {
-    if (!props.warn) {
-      return null;
-    }
+  handleChange(event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    });
   }
+
   handleToggleClick() {
     this.setState(prevState => ({
       showWarning: !prevState.showWarning
@@ -28,31 +23,42 @@ class Profile extends React.Component {
   }
 
   render() {
+    const { showing } = this.state;
     return (
       <div class="bx--grid bx--grid--full-width">
         <div class="bx--row">
-          <div className="bx--col-lg-16">
-            <h1 align="center" className="title">
-              Profile 
-            </h1>
+          <div className="bx--offset-lg-1 bx--col-lg-8">
+          <h1>Student Name</h1>
           </div>
         </div>
         <div class="bx--row">
           <div className="bx--col-lg-16">
-            <WarningBanner warn={this.state.showWarning} />
-            <button onClick={this.handleToggleClick}>
-              {this.state.showWarning ? "Hide" : "Show"}
-            </button>
+            <div style={{ display: showing ? "block" : "none" }}>
+              <input
+                type="file"
+                onChange={this.handleChange}
+                accept="image/gif, image/jpeg, image/png"
+              />
+            </div>
           </div>
         </div>
         <div class="bx--row">
           <div className="bx--offset-lg-1 bx--col-lg-8">
-            <h1>"Student Name"</h1>
-            <h2>Description:</h2>
-            <p>
-              I am a computer science student at NC A&T. I am from Memphis,
-              Tennessee and
-            </p>
+            <img src={this.state.file} width="300" alt="preview" />
+
+            <div className="bx--col-lg-8">
+              
+              <Button onClick={() => this.setState({ showing: !showing })}>
+                Pick New Photo/Hide Button
+              </Button>
+            </div>
+
+            <div>
+              <p>
+                Computer Science student, web developer, blah blah blah. Thanks for visiting my website.
+              </p>
+              
+            </div>
           </div>
         </div>
         <div class="bx--row">
