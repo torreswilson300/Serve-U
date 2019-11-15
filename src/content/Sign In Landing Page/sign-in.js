@@ -15,12 +15,9 @@ class SignInPage extends Component{
         Password: '',
       }
     }
-  
-
-SELECT_ALL_STUDENTS = 'SELECT * FROM students';
-SELECT_ALL_ORGS = 'SELECT * FROM organizations';
 
     onSubmit = () => {
+
       alert("");
     fetch(
       `http://localhost:4000/students/${this.state.Username}`
