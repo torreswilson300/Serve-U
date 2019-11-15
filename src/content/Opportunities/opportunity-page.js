@@ -78,8 +78,11 @@ class OpportunityPage extends Component {
               students.
             </div>
 
-            <div class="bx--rows"></div>
-          </div>
+
+        <div class="bx--rows">
+            
+        
+
         </div>
         <MDBContainer>
           <MDBRow>
