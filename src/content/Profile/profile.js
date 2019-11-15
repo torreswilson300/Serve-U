@@ -27,7 +27,7 @@ class Profile extends React.Component {
     return (
       <div class="bx--grid bx--grid--full-width">
         <div class="bx--row">
-          <div className="bx--offset-lg-1 bx--col-lg-8">
+          <div className="bx--offset-lg-1 bx--col-lg-8" >
           <h1>Student Name</h1>
           </div>
         </div>
@@ -55,7 +55,7 @@ class Profile extends React.Component {
 
             <div>
               <p>
-                Computer Science student, web developer, blah blah blah. Thanks for visiting my website.
+                Computer Science student, web developer, etc. Thanks for visiting my profile.
               </p>
               
             </div>
@@ -63,7 +63,7 @@ class Profile extends React.Component {
         </div>
         <div class="bx--row">
           <div className="bx--offset-lg-1 bx--col-lg-8">
-            <h2>List of student orgs</h2>
+            <h2>Student Involvement</h2>
             <p>Association for Computing Machinery</p>
             <p>NSBE</p>
             <p>SWE</p>
@@ -71,7 +71,7 @@ class Profile extends React.Component {
         </div>
         <div class="bx--row">
           <div className="bx--offset-lg-1 bx--col-lg-8">
-            <h2>Number of ours for each org</h2>
+            <h2>Community Service Hours</h2>
             <p>Association for Computing Machinery: 16hrs</p>
             <p>NSBE: 12hrs</p>
             <p>SWE: 6hrs</p>
