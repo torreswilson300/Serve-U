@@ -57,7 +57,7 @@ class ServeHeader extends Component {
             element={Link}
             to="/Profile"
           >
-            <UserAvatar20> </UserAvatar20>
+            
           </HeaderGlobalAction>
           
         </HeaderGlobalBar>
