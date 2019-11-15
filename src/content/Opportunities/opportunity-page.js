@@ -79,7 +79,8 @@ class OpportunityPage extends Component {
             </div>
 
 
-        <div class="bx--rows">
+        <div class="bx--rows"></div>
+        </div>
             
         
 
