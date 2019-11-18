@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import jwt_decode from 'jwt-decode'
+import React, { Component } from 'react';
+import jwt_decode from 'jwt-decode';
+import {Button} from "carbon-components-react";
 
 class Profile extends Component {
   constructor() {
@@ -9,8 +10,11 @@ class Profile extends Component {
       FirstName: '',
       LastName: '',
       Email: '',
-      errors: {}
+      errors: {},
+      
+
     }
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -23,14 +27,42 @@ class Profile extends Component {
       Email: decoded.Email
     })
   }
+  handleChange(event) {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    });
+  }
 
   render() {
+    const { showing } = this.state;
     return (
       <div className="container">
         <div className="jumbotron mt-5">
           <div className="col-sm-8 mx-auto">
             <h1 className="text-center">STUDENT PROFILE</h1>
           </div>
+          <div style={{ display: showing ? "block" : "none" }}>
+              <input
+                type="file"
+                onChange={this.handleChange}
+                accept="image/gif, image/jpeg, image/png"
+              />
+            </div>
+            <img src={this.state.file} width="300" alt="preview" />
+
+            <div className="bx--col-lg-8">
+
+              <Button onClick={() => this.setState({ showing: !showing })}>
+                Pick New Photo/Hide Button
+              </Button>
+            </div>
+
+            <div>
+              <p>
+                Computer Science student, web developer, blah blah blah. Thanks for visiting my website.
+              </p>
+
+            </div>
           <table className="table col-md-6 mx-auto">
             <tbody>
             <tr>
