@@ -7,8 +7,7 @@ import {
   TextArea,
   HeaderMenuItem
 } from "carbon-components-react";
-import { Link, history } from "react-router-dom";
-import SignInPage from "../Sign In Landing Page/sign-in.js";
+
 
 class LandingPage extends Component {
  
@@ -16,8 +15,8 @@ class LandingPage extends Component {
     render(){
   return (
     <div className="bx--grid bx--grid--full-width">
-      <div class="bx--no">
-        <div class="bx--rows">Welcome to ServeU!</div>
+      <div className="bx--no">
+        <div className="bx--rows">Welcome to ServeU!</div>
 
         <div class="bx--vid">
           <img
@@ -35,7 +34,6 @@ class LandingPage extends Component {
 
 
 
-         <h4> <Link className ='student' to="/Students" > STUDENT SIGN UP </Link>   or   <Link className ='orgs' to="/Orgs" > ORGANIZATION SIGN UP </Link></h4>
        
        
         </div>
