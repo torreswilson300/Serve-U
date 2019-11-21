@@ -24,11 +24,11 @@ module.exports = db.sequelize.define(
     Password: {
       type: Sequelize.CHAR
     },
-    HoursCompleted: {
+    HoursServed: {
       type: Sequelize.INTEGER
     },
-    HoursAttempted: {
-      type: Sequelize.INTEGER
-    },
+    AccountType: {
+      type: Sequelize.CHAR
+    }
   },{timestamps: false}
 )

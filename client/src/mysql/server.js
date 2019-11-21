@@ -11,7 +11,7 @@ const SELECT_ALL_POSTS = 'SELECT * FROM post'
 const connection = mysql.createConnection({
 host: 'localhost',
 user: 'root',
-password: 'Pr0T3chTioN!?',
+password: 'tcwi4826',
 database: 'serveu'
 });
 
