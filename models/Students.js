@@ -25,10 +25,10 @@ module.exports = db.sequelize.define(
       type: Sequelize.CHAR
     },
     HoursCompleted: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER 
     },
     HoursAttempted: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER 
     },
   },{timestamps: false}
 )

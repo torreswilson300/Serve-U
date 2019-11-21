@@ -1,18 +1,11 @@
-import React, { Component } from 'react'
-import jwt_decode from 'jwt-decode'
+import React, { Component } from "react";
 import {Button} from "carbon-components-react";
+import "./profile.scss";
 
-class Profile extends Component {
+class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      showWarning: true,
-      Username: '',
-      FirstName:'',
-      LastName: '',
-      Email: '',
-      errors: {}
-     };
+    this.state = { showWarning: true };
     this.handleToggleClick = this.handleToggleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -29,25 +22,13 @@ class Profile extends Component {
     }));
   }
 
-  componentDidMount() {
-    const token = localStorage.usertoken
-    const decoded = jwt_decode(token)
-    this.setState({
-      Username: decoded.Username,
-      FirstName: decoded.FirstName,
-      LastName: decoded.LastName,
-      Email: decoded.Email
-    })
-  }
-
   render() {
     const { showing } = this.state;
     return (
       <div class="bx--grid bx--grid--full-width">
         <div class="bx--row">
           <div className="bx--offset-lg-1 bx--col-lg-8">
-          <h1>Student FirstName</h1>
-          {this.state.FirstName}
+          <h1>Student Name</h1>
           </div>
         </div>
         <div class="bx--row">
@@ -100,5 +81,4 @@ class Profile extends Component {
     );
   }
 }
-
-export default Profile
+export default Profile;

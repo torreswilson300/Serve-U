@@ -1,12 +1,8 @@
-const express = require('express')
-const app = express()
-const path = require('path')
+var express = require('express')
 var cors = require('cors')
 var bodyParser = require('body-parser')
-
+var app = express()
 var port = process.env.PORT || 4000
-
-
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -15,7 +11,6 @@ app.use(
     extended: false
   })
 )
-
 
 var Students = require('./routes/Students')
 var Organizations = require('./routes/Organizations')

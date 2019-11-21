@@ -14,7 +14,6 @@
     "mdbreact": "^4.22.1",
     "mysql": "^2.17.1",
     "node-sass": "^4.12.0",
-    "pug": "^2.0.4",
     "react": "^16.9.0",
     "react-avatar-edit": "^0.8.3",
     "react-avatar-editor": "^12.0.0-beta.0",

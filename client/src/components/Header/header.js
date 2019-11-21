@@ -83,7 +83,7 @@ class ServeHeader extends Component {
           </HeaderMenuItem>
           </HeaderNavigation>
         <HeaderNavigation aria-label="Carbon Tutorial" id="left-side"align="left">
-        <HeaderMenuItem element={Link} to="/profile">
+        <HeaderMenuItem element={Link} to="/Profile">
             {" "}
             Profile{" "}
           </HeaderMenuItem> 

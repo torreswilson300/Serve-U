@@ -25,7 +25,7 @@ module.exports = db.sequelize.define(
       type: Sequelize.TEXT
     },
     NumOfMembers: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER  
     },
     NumOfPost: {
       type: Sequelize.INTEGER
