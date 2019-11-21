@@ -1,4 +1,7 @@
 import axios from 'axios'
+import { async } from 'q';
+// const StudentModel = require('../../../models/Students');
+
 
 export const register = newUser => {
   return axios
@@ -57,3 +60,13 @@ export const orgLogin = user => {
       console.log(err)
     })
 }
+
+/*
+export async function getAllStudents(){
+  return StudentModel.find({}).sort({FirstName: -1});
+}
+
+export async function getStudent(Username){
+  return StudentModel.findOne({_Username:Username });
+} */
+
