@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 import "./app.scss"; //Give page black back ground
 
-import Navbar from './components/Navbar'
-import { BrowserRouter as Router } from 'react-router-dom'
 import { Content } from "carbon-components-react";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "./content/Home/home-page";
@@ -15,10 +13,12 @@ import ServeFooter from "./components/Footer/footer";
 import ServeHeader from "./components/Header/header"
 import Login from './components/Login'
 import Register from './components/Register'
-import Profile from './components/Profile'
+import Profile from './content/Profile/Profile'
 import RegisterOrg from './components/RegisterOrg'
 import OrgProfile from './components/OrgProfile'
 import OrgLogin from './components/OrgLogin'
+
+
 
 
 class App extends Component {
@@ -41,6 +41,7 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/orgProfile" component={OrgProfile} />
             <Route exact path="/orgLogin" component={OrgLogin} />
+          
             </Switch>
             </Content>
         <ServeFooter />
