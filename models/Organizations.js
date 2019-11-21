@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const db = require('../database/db.js')
 
 module.exports = db.sequelize.define(
-  'Organizations',
+  'organizations',
   {
     OrgId: {
       type: Sequelize.INTEGER,
@@ -30,8 +30,5 @@ module.exports = db.sequelize.define(
     NumOfPost: {
       type: Sequelize.INTEGER
     },
-    AccountType: {
-      type: Sequelize.CHAR
-    }
   },{timestamps: false}
 )

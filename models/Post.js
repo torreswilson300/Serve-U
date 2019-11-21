@@ -2,33 +2,36 @@ const Sequelize = require('sequelize')
 const db = require('../database/db.js')
 
 module.exports = db.sequelize.define(
-  'students',
+  'posts',
   {
-    UserID: {
+    PostID: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    Username: {
+    Headline: {
       type: Sequelize.CHAR
     },
-    FirstName: {
+    Host: {
       type: Sequelize.CHAR
     },
-    LastName: {
-      type: Sequelize.CHAR
+    Date: {
+      type: Sequelize.DATEONLY
     },
-    Email: {
-      type: Sequelize.CHAR
+    StartTime: {
+      type: Sequelize.TIME
     },
-    Password: {
-      type: Sequelize.CHAR
+    EndTime: {
+      type: Sequelize.TIME
     },
-    HoursCompleted: {
+    HoursReceived: {
       type: Sequelize.INTEGER
     },
-    HoursAttempted: {
-      type: Sequelize.INTEGER
+    Description: {
+      type: Sequelize.STRING
     },
+    Url: {
+      type: Sequelize.CHAR
+    }
   },{timestamps: false}
 )
