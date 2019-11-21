@@ -95,21 +95,44 @@ organizations.get('/profile', (req, res) => {
     })
 })
 
-//Opportunities 
-posts.get('/Opportunity-page', (req, res) => {
-  // var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
- 
-   Post.findAll({})
-     .then(post => {
-       if (post) {
-         res.json(post)
-       } else {
-         res.send('No Opportunities Available')
-       }
-     })
-     .catch(err => {
-       res.send('error: ' + err)
-     })
- })
+// Create Opportunities 
+organizations.post('/createOpp', (req, res) => {
+  const postData = {
+    Headline: req.body.Headline,
+    Host: req.body.Host,
+    Date: req.body.Date,
+    StartTime: req.body.StartTime,
+    EndTime: req.body.EndTime,
+    HoursReceived: req.body.HoursReceived,
+    Description: req.body.Description,
+    Url: req.body.Url,
+    organizations_OrgId: req.body.organizations_OrgId
+  }
+
+  Post.findOne({
+    where: {
+      Headline: req.body.Headline, Date: req.body.Date
+    }
+  })
+  
+    .then(post => {
+      if (!post) {
+          Post.create(postData)
+            .then(post => {
+              res.json({ status: post.Headline + ' Created!' })
+            })
+            .catch(err => {
+              res.send('error: ' + err)
+            })
+        
+      } else {
+        res.json({ error: 'Post already exists' })
+        
+      }
+    })
+    .catch(err => {
+      res.send('error: ' + err)
+    })
+})
 
 module.exports = organizations, posts

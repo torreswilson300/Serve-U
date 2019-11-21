@@ -32,6 +32,9 @@ module.exports = db.sequelize.define(
     },
     Url: {
       type: Sequelize.CHAR
+    },
+    organizations_OrgId: {
+      type: Sequelize.INTEGER
     }
   },{timestamps: false}
 )
