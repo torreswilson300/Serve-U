@@ -23,6 +23,11 @@
     "jsonwebtoken": "^7.4.2",
     "mysql": "^2.14.1",
     "mysql2": "^1.6.1",
+<<<<<<< HEAD
+    "pug": "^2.0.4",
+    "react-datepicker": "^2.10.1",
+=======
+>>>>>>> master
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
