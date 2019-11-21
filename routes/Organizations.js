@@ -1,15 +1,11 @@
 const express = require('express')
 const organizations = express.Router()
-const posts = express.Router()
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
-const Organization = require('../models/Organizations');
-const Post = require('../models/Post');
-
+const Organization = require('../models/Organizations')
 organizations.use(cors())
-posts.use(cors())
 
 process.env.SECRET_KEY = 'secret'
 
@@ -75,11 +71,10 @@ organizations.post('/orgLogin', (req, res) => {
 })
 //PROFILE
 organizations.get('/profile', (req, res) => {
- // var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+  var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
   Organization.findOne({
     where: {
-      //Username: req.body.Username
       OrgId: decoded.OrgId
     }
   })
@@ -95,21 +90,4 @@ organizations.get('/profile', (req, res) => {
     })
 })
 
-//Opportunities 
-posts.get('/Opportunity-page', (req, res) => {
-  // var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
- 
-   Post.findAll({})
-     .then(post => {
-       if (post) {
-         res.json(post)
-       } else {
-         res.send('No Opportunities Available')
-       }
-     })
-     .catch(err => {
-       res.send('error: ' + err)
-     })
- })
-
-module.exports = organizations, posts
+module.exports = organizations
