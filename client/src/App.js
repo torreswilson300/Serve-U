@@ -13,7 +13,7 @@ import ServeFooter from "./components/Footer/footer";
 import ServeHeader from "./components/Header/header"
 import Login from './components/Login'
 import Register from './components/Register'
-import Profile from './content/Profile/Profile'
+import Profile from './content/Profile/profile'
 import RegisterOrg from './components/RegisterOrg'
 import OrgProfile from './components/OrgProfile'
 import OrgLogin from './components/OrgLogin'
