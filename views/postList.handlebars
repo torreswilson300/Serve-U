@@ -1,0 +1,18 @@
+{{!-- Layout for Events (Org View) --}}
+<section id="orgs" class="container">
+  <h1>All Events</h1>
+  {{#each posts}}
+    <div class = "org">
+      <h3>Title: {{title}}</h3>
+      <p> Host: {{host}}</p>
+      <p>Organization: {{org}}</p>
+      <p>Date of Event: {{ date }}</p>
+      <p>Start: {{ start }}</p>
+      <p>End: {{ end }}</p>
+      <p>Description: {{description}}</p>
+      <ul>
+        <li>Hours Received: {{hoursReceived}}</li>
+      </ul>
+    </div>
+  {{/each}}
+</section>

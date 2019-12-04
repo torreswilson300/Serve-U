@@ -1,0 +1,49 @@
+{{!-- This the Layout for Creating an Event--}}
+
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Create an Event</h1>
+      {{#each errors}}
+        <div class = "error">
+          <p>{{text}}</p>
+        </div>
+      {{/each}}
+      <form action="/orgs/post" method="POST">
+        <div class="input-group">
+          <label for="title">Event Title</label>
+          <input type="text" name="title" id="title" class="input-box" placeholder="Enter Title"
+            maxlength="100" value={{title}}>
+        </div>
+        <div class="input-group">
+          <label for="host">Event Host</label>
+          <input type="text" name="host" id="host" class="input-box" placeholder="Enter Host of Event"
+          maxlength="100" value={{host}}>
+        </div>
+        <div class="input-group">
+          <label for="date">Date</label>
+          <input type="text" name="date" id="date" class="input-box" placeholder=" MM/DD/YYYY " value={{date}}>
+        </div>
+        <div class="input-group">
+          <label for="start">Start Time</label>
+          <input type="start" name="start" id="start" class="input-box" placeholder="Enter Start Time ex. hh:mm:ss"
+            value={{start}}>
+        </div>
+        <div class="input-group">
+          <label for="end">End Time</label>
+          <input type="end" name="end" id="end" class="input-box" placeholder="Enter End Time ex. hh:mm:ss"
+            value={{end}}>
+        </div>
+        <div class="input-group">
+          <label for="hoursReceived">Hours Received For Attending</label>
+          <input type="hoursReceived" name="hoursReceived" id="hoursReceived" class="input-box" placeholder="Enter Hours Received For Attending ex. 0, 1, 2"
+            value={{hoursReceived}}>
+        </div>
+        <div class="input-group">
+          <label for="description">Event Description</label>
+          <textarea name="description" id="description" class="input-box" placeholder="Describe the Event"
+            rows="10" >{{description}}</textarea>
+        </div>
+        <input type="submit" value="Create Event" class="btn btn-reverse" onclick="validateDate(date)">
+      </form>
+    </div>
+  </section>

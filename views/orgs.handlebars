@@ -1,0 +1,14 @@
+{{!-- Layout for Org List --}}
+<section id="orgs" class="container">
+  <h1>All Orgs</h1>
+  {{#each orgs}}
+    <div class = "org">
+      <h3>{{orgName}}</h3>
+      <p>{{description}}</p>
+      <ul>
+        <li>{{email}}</li>
+        <li>Number of Events: {{numOfPost}}</li>
+      </ul>
+    </div>
+  {{/each}}
+</section>

@@ -1,0 +1,38 @@
+{{!-- This the Layout for the Org-SignUp Page--}}
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Organization Sign-Up</h1>
+      {{#each errors}}
+        <div class = "error">
+          <p>{{text}}</p>
+        </div>
+      {{/each}}
+      <form action="/orgs/add" method="POST">
+        <div class="input-group">
+          <label for="username">Organization Username</label>
+          <input type="text" name="username" id="username" class="input-box" placeholder="Enter Username"
+            maxlength="100" value={{username}}>
+        </div>
+        <div class="input-group">
+          <label for="orgName">Organization Name</label>
+          <input type="text" name="orgName" id="orgName" class="input-box" placeholder="Enter the Organization Name"
+          maxlength="100" value={{orgName}}>
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" class="input-box" placeholder="Enter Email" value={{email}}>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" class="input-box" placeholder="Enter Password"
+            value={{password}}>
+        </div>
+        <div class="input-group">
+          <label for="description">Organization Description</label>
+          <textarea name="description" id="description" class="input-box" placeholder="Describe your Org"
+            rows="10" >{{description}}</textarea>
+        </div>
+        <input type="submit" value="Sign Up" class="btn btn-reverse">
+      </form>
+    </div>
+  </section>

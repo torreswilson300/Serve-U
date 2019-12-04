@@ -1,0 +1,23 @@
+{{!-- Layout for Student Login --}}
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Student Login </h1>
+      {{#each errors}}
+        <div class = "error">
+          <p>{{text}}</p>
+        </div>
+      {{/each}}
+      <form action="/students/login" method="POST">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" class="input-box" placeholder="Enter Email" value={{email}}>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" class="input-box" placeholder="Enter Password"
+            value={{password}}>
+        </div>
+        <input type="submit" value="Login" class="btn btn-reverse">
+      </form>
+    </div>
+  </section>
