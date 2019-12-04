@@ -1,40 +1,19 @@
-const Sequelize = require('sequelize')
-const db = require('../database/db.js')
-
-module.exports = db.sequelize.define(
-  'posts',
-  {
-    PostID: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    Headline: {
-      type: Sequelize.CHAR
-    },
-    Host: {
-      type: Sequelize.CHAR
-    },
-    Date: {
-      type: Sequelize.DATEONLY
-    },
-    StartTime: {
-      type: Sequelize.TIME
-    },
-    EndTime: {
-      type: Sequelize.TIME
-    },
-    HoursReceived: {
-      type: Sequelize.INTEGER
-    },
-    Description: {
-      type: Sequelize.STRING
-    },
-    Url: {
-      type: Sequelize.CHAR
-    },
-    organizations_OrgId: {
-      type: Sequelize.INTEGER
-    }
-  },{timestamps: false}
-)
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Post = sequelize.define('Post', {
+    title: DataTypes.STRING,
+    host: DataTypes.STRING,
+    date: DataTypes.DATEONLY,
+    start: DataTypes.TIME,
+    end: DataTypes.TIME,
+    hoursReceived: DataTypes.INTEGER,
+    description: DataTypes.STRING,
+    org: DataTypes.STRING,
+    organizationId: DataTypes.INTEGER
+  }, {});
+  Post.associate = function(models) {
+    // associations can be defined here
+    Post.belongsTo(models.Organization, {foreignKey: 'organizationId'});
+  };
+  return Post;
+};

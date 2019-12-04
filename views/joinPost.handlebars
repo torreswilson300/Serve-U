@@ -1,0 +1,21 @@
+{{!-- Layout for Events (Student View) --}}
+<section id="orgs" class="container">
+  <form action="/students/post" method="POST">
+  <h1>Events</h1>
+  {{#each posts}}
+    <div class = "org">
+      <h2>Title: {{title}}</h2>
+      <p> Host: {{host}}</p>
+      <p>Organization: {{org}}</p>
+      <p>Date of Event: {{ date }}</p>
+      <p>Start: {{ start }}</p>
+      <p>End: {{ end }}</p>
+      <p>Description: {{description}}</p>
+      <ul>
+        <li>Hours Received: {{hoursReceived}}</li>
+      </ul>
+         <button> Join Event </button> <button> Share </button>  
+    </form>
+    </div>
+  {{/each}}
+</section>
