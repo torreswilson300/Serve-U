@@ -90,6 +90,7 @@ organizations.get('/profile', (req, res) => {
     })
 })
 
+/*
 // Create Opportunities 
 organizations.post('/createOpp', (req, res) => {
   const postData = {
@@ -129,5 +130,5 @@ organizations.post('/createOpp', (req, res) => {
       res.send('error: ' + err)
     })
 })
-
-module.exports = organizations, posts
+*/
+module.exports = organizations
