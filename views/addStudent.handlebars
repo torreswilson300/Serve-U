@@ -1,0 +1,38 @@
+{{!-- This the Layout for the Student Sign-Up Page--}}
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Student Sign-Up</h1>
+      {{#each errors}}
+        <div class = "error">
+          <p>{{text}}</p>
+        </div>
+      {{/each}}
+      <form action="/students/add" method="POST">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" class="input-box" placeholder="Enter Username"
+            maxlength="100" value={{username}}>
+        </div>
+        <div class="input-group">
+          <label for="firstName">First Name</label>
+          <input type="text" name="firstName" id="firstName" class="input-box" placeholder="Enter your First Name"
+          maxlength="100" value={{firstName}}>
+        </div>
+        <div class="input-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" name="lastName" id="lastName" class="input-box" placeholder="Enter your Last Name"
+          maxlength="100" value={{lastName}}>
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" class="input-box" placeholder="Enter Email" value={{email}}>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" class="input-box" placeholder="Enter Password"
+            value={{password}}>
+        </div>
+        <input type="submit" value="Sign Up" class="btn btn-reverse">
+      </form>
+    </div>
+  </section>
