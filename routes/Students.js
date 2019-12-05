@@ -1,11 +1,15 @@
+const Sequelize = require('sequelize');
 const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
 const Student = require('../models').Student;
 const Post = require('../models').Post;
 const StudentOrg = require('../models').StudentOrg;
+const Organization = require('../models').Organization;
 
 var hbsContent = {id: '' , username: '', email: '', loggedin: false, isOrg: false, isStudent: false, title: "You are not logged in today", body: "Hello World"}; 
+
+
 
 // middleware function to check for logged-in users
 var sessionChecker = (req, res, next) => {
@@ -40,6 +44,42 @@ router.get('/dash', (req,res) => {
     })  
 
 })
+
+//app.get('/', (req, res) => res.render('index', {layout: 'landing', isOrg:hbsContent.isOrg}));
+
+
+//Get org list (student view)
+router.get('/listOrgs', (req, res) => 
+//     console.log(hbsContent);    
+Organization.findAll({
+        attributes:{
+            include: [[Sequelize.fn("COUNT",Sequelize.col("posts.id")), "numOfPost"]]
+        },
+        include: [{
+            model: Post ,attributes: []
+        }],
+        group: ['Organization.id']
+      //  include: [Post]
+    })
+    .then(orgs => {
+        console.log(hbsContent) 
+    res.render('listOrgs', {
+        isStudent: hbsContent.isStudent,
+        loggedin: hbsContent.loggedin,
+       orgs:orgs
+    });
+    })
+.catch(err => console.log(err)));
+
+router.post('/listOrgs', (req,res) =>{
+    let orgIDs = [];
+    orgIDs = req.body;
+    console.log(orgIDs)
+    res.redirect('/students/dash')
+
+})
+
+
 //Display add Student Form
 router.get('/login', sessionChecker, (req, res) => res.render('loginStudent', hbsContent));
 //Login
@@ -168,6 +208,11 @@ router.get('/logout', (req, res) => {
 router.get('/about' , (req, res) => {
     res.render('about')
 })
+
+//functions
+function JoinOrg(){
+    alert("Org Joined")
+}
 
 
 module.exports = router;
