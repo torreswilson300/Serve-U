@@ -1,10 +1,10 @@
 {{!-- Layout for Events (Student View) --}}
 <section id="orgs" class="container">
-  <form action="/students/post" method="POST">
   <h1>Events</h1>
   {{#each posts}}
+  <form action="/students/posts" method="POST">
     <div class = "org">
-      <h2>Title: {{title}}</h2>
+      <h2> <input type="checkbox" name="postId" value="{{id}}"> Title: {{title}}</h2>  
       <p> Host: {{host}}</p>
       <p>Organization: {{org}}</p>
       <p>Date of Event: {{ date }}</p>
@@ -14,8 +14,9 @@
       <ul>
         <li>Hours Received: {{hoursReceived}}</li>
       </ul>
-         <button> Join Event </button> <button> Share </button>  
-    </form>
+ 
+          <button> <input type="submit" value="Attend Event"> </button><button> Share </button>  
     </div>
   {{/each}}
+  </form>
 </section>

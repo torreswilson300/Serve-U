@@ -60,17 +60,15 @@ Organization.findAll({
         }],
         group: ['Organization.id']
       //  include: [Post]
-    })
-    .then(orgs => {
+    }).then(orgs => {
       //  console.log(hbsContent) 
     res.render('listOrgs', {
         isStudent: hbsContent.isStudent,
         loggedin: hbsContent.loggedin,
        orgs:orgs
-    });
-    })
-.catch(err => console.log(err)));
+    });}).catch(err => console.log(err)));
 
+//Allows Students to join org    
 router.post('/listOrgs', (req,res) =>{
 
     var temp = JSON.stringify(req.body)
@@ -99,8 +97,6 @@ router.post('/listOrgs', (req,res) =>{
     res.redirect('/students/dash')
 
 })})
-
-
 
 //Display add Student Form
 router.get('/login', sessionChecker, (req, res) => res.render('loginStudent', hbsContent));
@@ -138,8 +134,7 @@ router.post('/login', (req,res) => {
            }
         })
         .catch(err => console.log(err));
-}
-})
+}})
 //Display add Student Form
 router.get('/add', (req, res) => res.render('addStudent'));
 // Add a Student
@@ -192,27 +187,44 @@ router.post('/add', (req,res) => {
 })
 //Get All Events
 router.get('/posts', (req, res) => 
-Post.findAll()
-    .then(posts => {
+Post.findAll().then(posts => {
     //console.log(posts);
     res.render('joinPost', {
        posts:posts, 
        isStudent: hbsContent.isStudent,
        loggedin: hbsContent.loggedin
-    });
-    })
-.catch(err => console.log(err)));
+    });}).catch(err => console.log(err)));
 
 //Get All Events
-router.post('/posts', (req, res) => 
-Post.findAll()
-    .then(posts => {
-  //  console.log(posts);
-    res.render('joinPost', {
-       posts:posts 
-    });
+router.post('/posts', (req,res) =>{
+
+    var temp = JSON.stringify(req.body)
+    var t = temp.match(/[0-9]+(,[0-9]+)*/g)  
+   console.log(t)
+
+         var stID = Promise.resolve(hbsContent.id)
+         Student.findOne({where: {id: req.session.user.id}})         
+         .then((stud)=> {
+             var st = stud; 
+    Post.findAll({where: {id: t } , include: ['student']})
+    .then((posts) => {
+        // For Each Org ID setthe Student
+        console.log(posts)
+        posts.forEach(post => {
+            
+            post.setStudent(st)// student is an array (one org hasMany students)
+            .then((joinedStudentToPost) => {
+                console.log(joinedStudentToPost)
+                
+            })
+            .catch((err) => console.log("Error while joining Posts and Students : ", err))
+        })
     })
-.catch(err => console.log(err)));
+    .catch((err) => console.log("Error while searching for Post : ", err))
+    res.redirect('/students/dash')
+
+})
+})
 
 //logout
 router.get('/logout', (req, res) => {
@@ -230,11 +242,5 @@ router.get('/logout', (req, res) => {
 router.get('/about' , (req, res) => {
     res.render('about')
 })
-
-//functions
-function JoinOrg(){
-    alert("Org Joined")
-}
-
 
 module.exports = router;

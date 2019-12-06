@@ -17,9 +17,15 @@ module.exports = (sequelize, DataTypes) => {
     Student.belongsToMany(models.Organization, {
     through:'studentOrgs',
     foreignKey: 'studentId',
-    as: 'organization'
-  });
+    as: 'organization'}),
+
+    Student.belongsToMany(models.Post, {
+      through:'studentPosts',
+      foreignKey: 'studentId',
+      as: 'post'
+  })
   };
+
   Student.beforeCreate((student, options) => {
     const salt = bcrypt.genSaltSync();
     student.password = bcrypt.hashSync(student.password, salt);

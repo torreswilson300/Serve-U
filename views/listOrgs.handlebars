@@ -7,16 +7,16 @@
   {{#each orgs}}
   <form action="/students/listOrgs" method="POST">
     <div class = "org">
-      <h3>{{orgName}}</h3> <h3>{{id}}</h3>
+      <h3> <input type="checkbox" name="orgId" value="{{id}}"> {{orgName}}</h3> <h3>{{id}}</h3>
       <p>{{description}}</p>
       <ul>
         <li>{{email}}</li>
         <li>Number of Events: {{numOfPost}}</li>
       </ul> 
-      <input type="checkbox" name="orgId" value="{{id}}"> Join Org   
+       
     </div>
   {{/each}}
-     <input type="submit" class="btn btn-reverse"> 
+     <input type="submit" class="btn btn-reverse" value="Join Org">
 
  </form>
 </section>
