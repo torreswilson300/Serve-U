@@ -6,10 +6,9 @@ const Student = require('../models').Student;
 const Post = require('../models').Post;
 const StudentOrg = require('../models').StudentOrg;
 const Organization = require('../models').Organization;
+const StudentPost = require('../models/StudentPost').StudentPost;
 
 var hbsContent = {id: '' , username: '', email: '', loggedin: false, isOrg: false, isStudent: false, title: "You are not logged in today", body: "Hello World"}; 
-
-
 
 // middleware function to check for logged-in users
 var sessionChecker = (req, res, next) => {
@@ -29,6 +28,7 @@ router.get('/dash', (req,res) => {
         hbsContent.id = req.session.user.id;
         hbsContent.username = req.session.user.username;
     }
+
     Student.findOne({ where: { email: hbsContent.email}})
     .then(students => {
         // console.log(students);
@@ -199,8 +199,31 @@ Post.findAll().then(posts => {
 router.post('/posts', (req,res) =>{
 
     var temp = JSON.stringify(req.body)
-    var t = temp.match(/[0-9]+(,[0-9]+)*/g)  
-   console.log(t)
+    var t = temp.match(/[0-9]+(,[0-9]+)*/g) 
+
+   //console.log(t)
+//-------------------------------------------------------------------
+//Adds hours from post to hours attempted
+   Post.findAll({
+       where: { id: t},
+       attributes: ['hoursReceived'],
+   }).then(hours => {
+       var h = JSON.stringify(hours)
+       var x = h.match(/[0-9]+(,[0-9]+)*/g)
+       var hrsAtt = sum(x) 
+       console.log(hrsAtt)
+
+       Student.findOne({
+           where:{ id: req.session.user.id}
+       })
+       .then(student => {
+           student.hoursAttempted = student.hoursAttempted + hrsAtt
+           student.save()
+           console.log(student)
+       }
+//-------------------------------------------------------------
+       )
+   })
 
          var stID = Promise.resolve(hbsContent.id)
          Student.findOne({where: {id: req.session.user.id}})         
@@ -215,7 +238,6 @@ router.post('/posts', (req,res) =>{
             post.setStudent(st)// student is an array (one org hasMany students)
             .then((joinedStudentToPost) => {
                 console.log(joinedStudentToPost)
-                
             })
             .catch((err) => console.log("Error while joining Posts and Students : ", err))
         })
@@ -242,5 +264,22 @@ router.get('/logout', (req, res) => {
 router.get('/about' , (req, res) => {
     res.render('about')
 })
+
+
+function sum(input){
+             
+    if (toString.call(input) !== "[object Array]")
+       return false;
+         
+               var total =  0;
+               for(var i=0;i<input.length;i++)
+                 {                  
+                   if(isNaN(input[i])){
+                   continue;
+                    }
+                     total += Number(input[i]);
+                  }
+                return total;
+               }
 
 module.exports = router;
