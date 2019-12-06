@@ -14,6 +14,13 @@ module.exports = (sequelize, DataTypes) => {
   Post.associate = function(models) {
     // associations can be defined here
     Post.belongsTo(models.Organization, {foreignKey: 'organizationId'});
+
+    Post.belongsToMany(models.Student, {
+      through:'studentPosts',
+      foreignKey: 'postId',
+      as: 'student'
+  })
+
   };
   return Post;
 };

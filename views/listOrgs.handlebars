@@ -1,0 +1,22 @@
+{{!-- Layout for Org List --}}
+<script type="text/javascript" src="/testfile.js"></script>
+<section id="orgs" class="container">
+  <h1>All Orgs</h1>
+  <h3>Select the organizations you want to join then click submit</h3>
+
+  {{#each orgs}}
+  <form action="/students/listOrgs" method="POST">
+    <div class = "org">
+      <h3> <input type="checkbox" name="orgId" value="{{id}}"> {{orgName}}</h3> <h3>{{id}}</h3>
+      <p>{{description}}</p>
+      <ul>
+        <li>{{email}}</li>
+        <li>Number of Events: {{numOfPost}}</li>
+      </ul> 
+       
+    </div>
+  {{/each}}
+     <input type="submit" class="btn btn-reverse" value="Join Org">
+
+ </form>
+</section>

@@ -18,7 +18,7 @@ var sessionChecker = (req, res, next) => {
     }    
 };
 
-router.get('/', (req, res) => res.render('index', {layout: 'landing', hbsContent}));
+router.get('/', (req, res) => res.render('index', {layout: 'landing', isOrg: hbsContent.isOrg}));
 
 //Get org list
 router.get('/list', (req, res) => 
