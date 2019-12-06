@@ -62,7 +62,7 @@ Organization.findAll({
       //  include: [Post]
     })
     .then(orgs => {
-        console.log(hbsContent) 
+      //  console.log(hbsContent) 
     res.render('listOrgs', {
         isStudent: hbsContent.isStudent,
         loggedin: hbsContent.loggedin,
@@ -72,12 +72,34 @@ Organization.findAll({
 .catch(err => console.log(err)));
 
 router.post('/listOrgs', (req,res) =>{
-    let orgIDs = [];
-    orgIDs = req.body;
-    console.log(orgIDs)
+
+    var temp = JSON.stringify(req.body)
+    var t = temp.match(/[0-9]+(,[0-9]+)*/g)  
+   console.log(t)
+
+        var stID = Promise.resolve(hbsContent.id)
+        Student.findOne({where: {id: req.session.user.id}})
+        .then((stud)=> {
+            var st = stud; 
+    Organization.findAll({where: {id: t } , include: ['student']})
+    .then((organizations) => {
+        // For Each Org ID setthe Student
+        console.log(organizations)
+        organizations.forEach(organization => {
+            
+            organization.setStudent(st)// student is an array (one org hasMany students)
+            .then((joinedStudentToOrg) => {
+                console.log(joinedStudentToOrg)
+                
+            })
+            .catch((err) => console.log("Error while joining Organizations and Students : ", err))
+        })
+    })
+    .catch((err) => console.log("Error while searching for Organization : ", err))
     res.redirect('/students/dash')
 
-})
+})})
+
 
 
 //Display add Student Form
@@ -172,7 +194,7 @@ router.post('/add', (req,res) => {
 router.get('/posts', (req, res) => 
 Post.findAll()
     .then(posts => {
-    console.log(posts);
+    //console.log(posts);
     res.render('joinPost', {
        posts:posts, 
        isStudent: hbsContent.isStudent,
@@ -185,7 +207,7 @@ Post.findAll()
 router.post('/posts', (req, res) => 
 Post.findAll()
     .then(posts => {
-    console.log(posts);
+  //  console.log(posts);
     res.render('joinPost', {
        posts:posts 
     });
