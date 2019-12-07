@@ -234,16 +234,15 @@ router.post('/add', (req,res) => {
 })
 //logout
 router.get('/logout', (req, res) => {
-    if (req.session.user && req.cookies.user_sid) {
-        hbsContent.loggedin = false; 
-        hbsContent.isOrg = false;
-        hbsContent.isStudent = false;
-		hbsContent.title = "You are logged out!"; 
-        res.clearCookie('user_sid');
-		console.log(JSON.stringify(hbsContent)); 
-        res.redirect('/');
-    }
+    hbsContent.loggedin = false; 
+    hbsContent.isOrg = false;
+    hbsContent.isStudent = false;
+    hbsContent.title = "You are logged out!"; 
+    res.clearCookie('user_sid');
+    console.log(JSON.stringify(hbsContent)); 
+    res.redirect('/');
 });
+
 //Get All Events
 router.get('/posts', (req, res) => 
 Post.findAll()
