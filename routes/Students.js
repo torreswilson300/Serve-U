@@ -85,7 +85,7 @@ router.post('/listOrgs', (req,res) =>{
         console.log(organizations)
         organizations.forEach(organization => {
             
-            organization.setStudent(st)// student is an array (one org hasMany students)
+            organization.addStudent(st)// student is an array (one org hasMany students)
             .then((joinedStudentToOrg) => {
                 console.log(joinedStudentToOrg)
                 
@@ -231,11 +231,11 @@ router.post('/posts', (req,res) =>{
              var st = stud; 
     Post.findAll({where: {id: t } , include: ['student']})
     .then((posts) => {
-        // For Each Org ID setthe Student
+        // For Each Post ID add the Student
         console.log(posts)
         posts.forEach(post => {
             
-            post.setStudent(st)// student is an array (one org hasMany students)
+            post.addStudent(st)// student is an array (one org hasMany students)
             .then((joinedStudentToPost) => {
                 console.log(joinedStudentToPost)
             })
@@ -250,7 +250,6 @@ router.post('/posts', (req,res) =>{
 
 //logout
 router.get('/logout', (req, res) => {
-    if (req.session.user && req.cookies.user_sid) {
         hbsContent.loggedin = false; 
         hbsContent.isOrg = false;
         hbsContent.isStudent = false;
@@ -258,12 +257,36 @@ router.get('/logout', (req, res) => {
         res.clearCookie('user_sid');
 		console.log(JSON.stringify(hbsContent)); 
         res.redirect('/');
-    }
 });
 
-router.get('/about' , (req, res) => {
-    res.render('about')
+router.get('/view/:postId', (req,res) => {
+    var id = req.params.postId
+    //Get students for a given Post
+Post.findByPk(id,{include: ['student']})
+.then((post) => {
+    var s = []
+    s = post.student
+    console.log(s)
+
+    // for(i in post.student)
+    
+       // console.log(post.get({plain:true}))
+     //   console.log(s.firstName)
+        
+        res.render('viewAttending',{
+            s:s,
+            isStudent: hbsContent.isStudent,
+            loggedin: hbsContent.loggedin})
+            //console.log(s)
+    })       
 })
+
+  
+
+
+
+router.get('/about' , (req, res) => {
+    res.render('about' , hbsContent)})
 
 
 function sum(input){

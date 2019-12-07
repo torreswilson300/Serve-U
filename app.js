@@ -66,27 +66,15 @@ app.use((req, res, next) => {
     next();
 });
 
-// // middleware function to check for logged-in users
-// var sessionChecker = (req, res, next) => {
-//     if (req.session.user && req.cookies.user_sid) {
-//         res.redirect('/dash');
-//     } else {
-//         next();
-//     }    
-// };
-
 //Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-var hbsContent = {id: '' , orgName: '', email: '', loggedin: false, isOrg: false, isStudent: false, title: "You are not logged in today", body: "Hello World"}; 
 
+app.get('/', (req, res) => res.render('index',  { layout: 'landing'}));
 
-app.get('/', (req, res) => res.render('index', {layout: 'landing'}));
 
 // Organization routes
 app.use('/orgs', require('./routes/organizations'))
-// Routes for all
-app.use('/all', require('./routes/all'))
 // Student routes
 app.use('/students', require('./routes/students'))
 
