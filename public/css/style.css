@@ -28,9 +28,26 @@ a {
   text-decoration: none;
 }
 
+.a {
+  color: rgb(0, 0, 0);
+}
+
 a:hover {
   color: var(--primary-color);
 }
+
+
+
+q {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+q:hover {
+  color: var(--primary-color);
+}
+
+
 
 .container {
   max-width: 960px;

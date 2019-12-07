@@ -259,8 +259,13 @@ router.get('/logout', (req, res) => {
         res.redirect('/');
 });
 
-router.get('/view', (req,res) => {
-    res.render('viewAttending',hbsContent)
+router.get('/view/:postId', (req,res) => {
+    var id = req.params.postId
+    res.render('viewAttending',{
+        id:id, 
+        isStudent: hbsContent.isStudent,
+        loggedin: hbsContent.loggedin})
+        console.log(hbsContent)
 })
 
 
