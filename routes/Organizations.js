@@ -18,7 +18,6 @@ var sessionChecker = (req, res, next) => {
     }    
 };
 
-router.get('/', (req, res) => res.render('index', {layout: 'landing', isOrg: hbsContent.isOrg}));
 
 //Get org list
 router.get('/list', (req, res) => 
@@ -52,29 +51,12 @@ router.get('/dash', (req,res) => {
         hbsContent.id = req.session.user.id;
         hbsContent.orgName = req.session.user.orgName;
     }
-    Organization.findAll({
-        where: { email: hbsContent.email},
-        attributes:{
-            include: [[Sequelize.fn("COUNT",Sequelize.col("posts.id")), "numOfPost"]]
-        },
-        include: [{
-            model: Post ,attributes: []
-        }],
-        group: ['Organization.id']
-      //  include: [Post]
-    })
+    Organization.findAll({})
     .then(orgs => {
-          console.log(orgs);
-        //  console.log(hbsContent);
         res.render('dash', {
             isOrg: hbsContent.isOrg,
             loggedin: hbsContent.loggedin,
             orgs:orgs
-            // orgName: orgs.orgName,
-            // description: orgs.description,
-            // email: orgs.email,
-            // numOfPost: orgs.numOfPost
-           
         });
     })  
 
@@ -168,7 +150,6 @@ router.post('/post', (req,res) => {
         });
     } else {
             //Insert into table
-            var count;
                     Post.create({
                         title, 
                         host, 
@@ -180,14 +161,24 @@ router.post('/post', (req,res) => {
                         org,
                         organizationId
                     })
-                    Organization.numOfPost + 1
                     .then(res.redirect('/orgs/list'))
-                    .catch(err => console.log(err));      
+                    .catch(err => console.log(err));
+                
+                    
+        Organization.findOne({
+            where:{ id: req.session.user.id}
+        })
+        .then(o => {
+            o.numOfPost = o.numOfPost + 1
+            o.save()
+            console.log(o)
+        })
+
+
                 }
-})
-router.put ('/post', (req,res) =>{
 
 })
+
 //Display add Org Form
 router.get('/add', (req, res) => res.render('addOrg'));
 // Add a Org
@@ -265,6 +256,14 @@ Post.findAll()
     });
     })
 .catch(err => console.log(err)));
+
+//Route Home
+router.get('/' , (req, res) => {
+    res.render('index' , hbsContent)})
+
+//Route to About Page
+router.get('/about' , (req, res) => {
+    res.render('about' , hbsContent)})
 
 
 module.exports = router;

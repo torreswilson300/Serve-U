@@ -15,16 +15,19 @@
 
 <body>
   <header class="inner">
-    <h2><a href="/">ServeU</a></h2>
     {{# if isOrg}}
+     <h2><a href="/orgs/dash"></i> ServeU</a></h2>
     {{> org}}
     {{else}}
     {{# if isStudent}}
+     <h2><a href="/student/studentDash"></i> ServeU</a></h2>
     {{> student}}
     {{else}}
+     <h2><a href="/"></i> ServeU</a></h2>
     {{> default}}
     {{/if}}
     {{/if}}
+  </header>
   </header>
 <div class="container">
       {{{body}}}

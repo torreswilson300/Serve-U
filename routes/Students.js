@@ -261,9 +261,11 @@ router.get('/logout', (req, res) => {
     }
 });
 
+
+
+
 router.get('/about' , (req, res) => {
-    res.render('about')
-})
+    res.render('about' , hbsContent)})
 
 
 function sum(input){
