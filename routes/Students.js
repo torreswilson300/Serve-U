@@ -231,7 +231,7 @@ router.post('/posts', (req,res) =>{
              var st = stud; 
     Post.findAll({where: {id: t } , include: ['student']})
     .then((posts) => {
-        // For Each Org ID setthe Student
+        // For Each Post ID add the Student
         console.log(posts)
         posts.forEach(post => {
             
@@ -259,22 +259,30 @@ router.get('/logout', (req, res) => {
         res.redirect('/');
 });
 
-// router.get('/view/:postId', (req,res) => {
-//     var id = req.params.postId
-//     //GEt Students for a Organization
+router.get('/view/:postId', (req,res) => {
+    var id = req.params.postId
+    //Get students for a given Post
+Post.findByPk(id,{include: ['student']})
+.then((post) => {
+    var s = []
+    s = post.student
+    console.log(s)
 
-// Post.findAll({
-//     where:{id:id},
-//     include:['student']})
-// .then((post) => {
-//     console.log(post)
-// })
-//     // res.render('viewAttending',{
-//     //     id:id, 
-//     //     isStudent: hbsContent.isStudent,
-//     //     loggedin: hbsContent.loggedin})
-//     //     console.log(hbsContent)
-// })
+    // for(i in post.student)
+    
+       // console.log(post.get({plain:true}))
+     //   console.log(s.firstName)
+        
+        res.render('viewAttending',{
+            s:s,
+            isStudent: hbsContent.isStudent,
+            loggedin: hbsContent.loggedin})
+            //console.log(s)
+    })       
+})
+
+  
+
 
 
 router.get('/about' , (req, res) => {
