@@ -85,7 +85,7 @@ router.post('/listOrgs', (req,res) =>{
         console.log(organizations)
         organizations.forEach(organization => {
             
-            organization.setStudent(st)// student is an array (one org hasMany students)
+            organization.addStudent(st)// student is an array (one org hasMany students)
             .then((joinedStudentToOrg) => {
                 console.log(joinedStudentToOrg)
                 
@@ -235,7 +235,7 @@ router.post('/posts', (req,res) =>{
         console.log(posts)
         posts.forEach(post => {
             
-            post.setStudent(st)// student is an array (one org hasMany students)
+            post.addStudent(st)// student is an array (one org hasMany students)
             .then((joinedStudentToPost) => {
                 console.log(joinedStudentToPost)
             })
@@ -259,14 +259,22 @@ router.get('/logout', (req, res) => {
         res.redirect('/');
 });
 
-router.get('/view/:postId', (req,res) => {
-    var id = req.params.postId
-    res.render('viewAttending',{
-        id:id, 
-        isStudent: hbsContent.isStudent,
-        loggedin: hbsContent.loggedin})
-        console.log(hbsContent)
-})
+// router.get('/view/:postId', (req,res) => {
+//     var id = req.params.postId
+//     //GEt Students for a Organization
+
+// Post.findAll({
+//     where:{id:id},
+//     include:['student']})
+// .then((post) => {
+//     console.log(post)
+// })
+//     // res.render('viewAttending',{
+//     //     id:id, 
+//     //     isStudent: hbsContent.isStudent,
+//     //     loggedin: hbsContent.loggedin})
+//     //     console.log(hbsContent)
+// })
 
 
 router.get('/about' , (req, res) => {
