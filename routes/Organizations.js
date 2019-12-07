@@ -281,7 +281,7 @@ Organization.findByPk(id,{include: ['student']})
 
         res.render('viewStudents',{
             o:o,
-            isStudent: hbsContent.isOrg,
+            isOrg: hbsContent.isOrg,
             loggedin: hbsContent.loggedin})
             //console.log(s)
     })       
