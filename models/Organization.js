@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Organization.associate = function(models) {
     Organization.hasMany(models.Post);
+    Organization.hasMany(models.Feedback);
     Organization.belongsToMany(models.Student, {
       through:'studentOrgs',
       foreignKey: 'organizationId',
