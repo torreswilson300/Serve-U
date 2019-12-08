@@ -5,7 +5,7 @@ const db = require('../config/database');
 const Organization = require('../models').Organization;
 const Post = require('../models').Post;
 
-var hbsContent = {id: '' , orgName: '', email: '', loggedin: false, isOrg: false, isStudent: false, title: "You are not logged in today", body: "Hello World"}; 
+var hbsContent = {id: '' , orgName: '', email: '', loggedin: false, isOrg: false, isStudent: false, isApproved: false, title: "You are not logged in today", body: "Hello World"}; 
 var count
 
 // middleware function to check for logged-in users
@@ -267,7 +267,7 @@ router.get('/' , (req, res) => {
 //Route to About Page
 router.get('/about' , (req, res) => {
     res.render('about' , hbsContent)})
-
+  
 
 //This shows a list of students for a particular Post
 router.get('/viewStudents', (req,res) => {
@@ -281,12 +281,24 @@ Organization.findByPk(id,{include: ['student']})
 
         res.render('viewStudents',{
             o:o,
+            isApproved: hbsContent.isApproved,
             isOrg: hbsContent.isOrg,
             loggedin: hbsContent.loggedin})
             //console.log(s)
     })       
 })
 
+//Route to Approve
+router.get('/approve/:studId' , (req, res) => {
+    var id = req.params.studId
+    console.log(id)
+    res.render('approve' , hbsContent)})
+
+
+router.get('/deny/:studId' , (req, res) => {
+    var id = req.params.studId
+    console.log(id)
+    res.render('deny' , hbsContent)})    
 
 
 module.exports = router;
