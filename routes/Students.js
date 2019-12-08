@@ -259,6 +259,8 @@ router.get('/logout', (req, res) => {
         res.redirect('/');
 });
 
+
+//This shows a list of students for a particular Post
 router.get('/view/:postId', (req,res) => {
     var id = req.params.postId
     //Get students for a given Post

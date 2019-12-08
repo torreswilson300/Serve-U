@@ -3,9 +3,10 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
 const Organization = require('../models').Organization;
+const Student = require('../models').Student;
 const Post = require('../models').Post;
 
-var hbsContent = {id: '' , orgName: '', email: '', loggedin: false, isOrg: false, isStudent: false, title: "You are not logged in today", body: "Hello World"}; 
+var hbsContent = {id: '' , orgName: '', email: '', loggedin: false, isOrg: false, isStudent: false, isApproved: false, title: "You are not logged in today", body: "Hello World"}; 
 var count
 
 // middleware function to check for logged-in users
@@ -51,14 +52,18 @@ router.get('/dash', (req,res) => {
         hbsContent.id = req.session.user.id;
         hbsContent.orgName = req.session.user.orgName;
     }
-    Organization.findAll({})
+    Organization.findOne({ where: { email: hbsContent.email}})
     .then(orgs => {
-        res.render('dash', {
+        // console.log(orgs);
+        res.render('dash',{
+            orgName: orgs.orgName,
+            email: orgs.email,
+            numOfPost: orgs.numOfPost,
+            description: orgs.description,
             isOrg: hbsContent.isOrg,
-            loggedin: hbsContent.loggedin,
-            orgs:orgs
+            loggedin: hbsContent.loggedin
         });
-    })  
+    })   
 
 })
 //Display add Org Form
@@ -161,7 +166,7 @@ router.post('/post', (req,res) => {
                         org,
                         organizationId
                     })
-                    .then(res.redirect('/orgs/list'))
+                    .then(res.redirect('/orgs/dash'))
                     .catch(err => console.log(err));
                 
                     
@@ -171,7 +176,7 @@ router.post('/post', (req,res) => {
         .then(o => {
             o.numOfPost = o.numOfPost + 1
             o.save()
-            console.log(o)
+           // console.log(o)
         })
 
 
@@ -263,6 +268,54 @@ router.get('/' , (req, res) => {
 //Route to About Page
 router.get('/about' , (req, res) => {
     res.render('about' , hbsContent)})
+  
 
+//This shows a list of students for a particular Post
+router.get('/viewStudents', (req,res) => {
+    var id = req.session.user.id
+    //Get students for a given Post
+Organization.findByPk(id,{include: ['student']})
+.then((org) => {
+    var o = []
+    o = org.student
+    //console.log(o)
+
+        res.render('viewStudents',{
+            o:o,
+            isApproved: hbsContent.isApproved,
+            isOrg: hbsContent.isOrg,
+            loggedin: hbsContent.loggedin})
+            //console.log(s)
+    })       
+})
+
+//Route to Approve
+router.get('/approve/:studId' , (req, res) => {
+     var id = req.params.studId
+    // console.log(id)
+
+    Student.findOne({ where: { id: id }})
+    .then(function(org){
+        console.log(org)
+        org.hoursCompleted = org.hoursCompleted + org.hoursAttempted;
+        org.hoursAttempted = 0;
+        org.save()
+        console.log(org)
+        res.render('approve' , hbsContent)})
+
+})
+    
+
+router.get('/deny/:studId' , (req, res) => {
+    var id = req.params.studId
+    Student.findOne({ where: { id: id }})
+    .then(function(org){
+        console.log(org)
+        org.hoursAttempted = 0;
+        org.save()
+        console.log(org)
+        res.render('deny' , hbsContent)})
+
+    })
 
 module.exports = router;
