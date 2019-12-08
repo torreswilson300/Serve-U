@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
 const Organization = require('../models').Organization;
+const Student = require('../models').Student;
 const Post = require('../models').Post;
 
 var hbsContent = {id: '' , orgName: '', email: '', loggedin: false, isOrg: false, isStudent: false, isApproved: false, title: "You are not logged in today", body: "Hello World"}; 
@@ -175,7 +176,7 @@ router.post('/post', (req,res) => {
         .then(o => {
             o.numOfPost = o.numOfPost + 1
             o.save()
-            console.log(o)
+           // console.log(o)
         })
 
 
@@ -277,7 +278,7 @@ Organization.findByPk(id,{include: ['student']})
 .then((org) => {
     var o = []
     o = org.student
-    console.log(o)
+    //console.log(o)
 
         res.render('viewStudents',{
             o:o,
@@ -290,9 +291,22 @@ Organization.findByPk(id,{include: ['student']})
 
 //Route to Approve
 router.get('/approve/:studId' , (req, res) => {
-    var id = req.params.studId
-    console.log(id)
-    res.render('approve' , hbsContent)})
+     var id = req.params.studId
+    // console.log(id)
+
+    Student.findOne({ where: { id: id }})
+    .then(function(org){
+        console.log(org)
+        org.hoursCompleted = org.hoursCompleted + org.hoursAttempted;
+        org.hoursAttempted = 0;
+        org.save()
+        console.log(org)
+        res.render('approve' , hbsContent)})
+
+})
+    
+
+
 
 
 router.get('/deny/:studId' , (req, res) => {
