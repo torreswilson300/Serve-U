@@ -62,6 +62,10 @@ q:hover {
   margin-bottom: 15px;
 }
 
+.tweet{
+  margin-right: 10px;
+}
+
 /* Header */
 header {
   display: flex;
