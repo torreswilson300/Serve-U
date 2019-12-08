@@ -306,13 +306,16 @@ router.get('/approve/:studId' , (req, res) => {
 })
     
 
-
-
-
 router.get('/deny/:studId' , (req, res) => {
     var id = req.params.studId
-    console.log(id)
-    res.render('deny' , hbsContent)})    
+    Student.findOne({ where: { id: id }})
+    .then(function(org){
+        console.log(org)
+        org.hoursAttempted = 0;
+        org.save()
+        console.log(org)
+        res.render('deny' , hbsContent)})
 
+    })
 
 module.exports = router;
