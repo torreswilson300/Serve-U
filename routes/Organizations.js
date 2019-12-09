@@ -268,6 +268,9 @@ router.get('/' , (req, res) => {
 //Route to About Page
 router.get('/about' , (req, res) => {
     res.render('about' , hbsContent)})
+
+    router.get('/feedback' , (req, res) => {
+        res.render('feedback' , hbsContent)})
   
 
 //This shows a list of students for a particular Post

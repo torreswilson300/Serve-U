@@ -284,11 +284,13 @@ Post.findByPk(id,{include: ['student']})
 })
 
   
-
+router.get('/feedback' , (req, res) => {
+    res.render('feedback' , hbsContent)})
 
 
 router.get('/about' , (req, res) => {
     res.render('about' , hbsContent)})
+
 
 
 function sum(input){
