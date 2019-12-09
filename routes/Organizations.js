@@ -100,9 +100,7 @@ router.post('/login', (req,res) => {
                req.session.user = org.dataValues;
                res.redirect('/orgs/dash');
            }
-        })
-        
-
+        })      
 }
 })
 //Display add post form
@@ -317,5 +315,43 @@ router.get('/deny/:studId' , (req, res) => {
         res.render('deny' , hbsContent)})
 
     })
+
+//Display Verify Screen
+router.get('/verify', (req, res) => res.render('verify', hbsContent));
+//Verify user
+router.post('/verify', (req,res) => {
+
+    let {email, password} = req.body;
+    let errors = [];
+
+    // Validate Fields
+    if(!email) {
+        errors.push({ text: 'Please enter a Email'})
+    }
+    if(!password) {
+        errors.push({ text: 'Please enter a Password'})
+    }
+
+    //Check for Errors
+    if(errors.length > 0){
+        res.render('verify', {
+            errors,
+            email, 
+            password, 
+        });
+    } else{
+        Organization.findOne({ where: { email: email}})
+        .then(function(org){
+           if(!org){
+               res.redirect('/verify');
+           } else if (!org.validPassword(password)){
+               res.redirect('/verify');
+           } else {
+               req.session.user = org.dataValues;
+               res.redirect('/orgs/viewStudents');
+           }
+        })      
+}
+})
 
 module.exports = router;
