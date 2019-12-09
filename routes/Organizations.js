@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
+const StudentOrg = require('../models').StudentOrg;
 const Organization = require('../models').Organization;
 const Student = require('../models').Student;
 const Post = require('../models').Post;
@@ -336,6 +337,23 @@ Organization.findByPk(id,{include: ['post']})
 })
 
 
+
+//Route to Remove Student (Org)
+router.get('/remove/:studId' , (req, res) => {
+    var id = req.params.studId
+   // console.log(id)
+
+   StudentOrg.findOne({ where: { studentId: id , organizationId: hbsContent.id}})
+   .then(function(student){
+       console.log(student)
+        student.destroy()
+        res.render('deleted' , hbsContent)
+    
+    })
+
+})
+
+
 //Route to Delete Event (Org)
 router.get('/delete/:postId' , (req, res) => {
     var id = req.params.postId
@@ -345,7 +363,7 @@ router.get('/delete/:postId' , (req, res) => {
    .then(function(post){
        console.log(post)
         post.destroy()
-        res.render('deleted' , hbsContent)})
+        res.render('remove' , hbsContent)})
 
 })
 
