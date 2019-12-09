@@ -280,6 +280,7 @@ Post.findByPk(id,{include: ['student']})
 
 
 
+
 //This shows a list of post for the student
 router.get('/viewEvents', (req,res) => {
     var id = hbsContent.id
@@ -362,8 +363,10 @@ router.get('/feedback' , (req,res) =>{
 
 
 
+
 router.get('/about' , (req, res) => {
     res.render('about' , hbsContent)})
+
 
 
 function sum(input){
