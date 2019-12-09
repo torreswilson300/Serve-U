@@ -278,6 +278,26 @@ Post.findByPk(id,{include: ['student']})
     })       
 })
 
+
+
+//This shows a list of post for the student
+router.get('/viewEvents', (req,res) => {
+    var id = hbsContent.id
+    //Get posts for a given Student
+Student.findByPk(id,{include: ['post']})
+.then((student) => {
+    var p = []
+    p = student.post
+    console.log(p)
+        
+        res.render('viewEvents',{
+            p:p,
+            isStudent: hbsContent.isStudent,
+            loggedin: hbsContent.loggedin})
+            //console.log(s)
+    })       
+})
+
 router.get('/feedback' , (req,res) =>{
     res.render('feedback', hbsContent)
 })
