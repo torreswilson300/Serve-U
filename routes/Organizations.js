@@ -336,6 +336,20 @@ Organization.findByPk(id,{include: ['post']})
 })
 
 
+//Route to Delete Event (Org)
+router.get('/delete/:postId' , (req, res) => {
+    var id = req.params.postId
+   // console.log(id)
+
+   Post.findOne({ where: { id: id , organizationId: hbsContent.id}})
+   .then(function(post){
+       console.log(post)
+        post.destroy()
+        res.render('deleted' , hbsContent)})
+
+})
+
+
 
 
 

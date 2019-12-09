@@ -1,8 +1,10 @@
 <section>
     <h1>Manage Events</h1>
     {{#each o}}
+     <form action="/orgs/viewEvents" method="POST"></form>
     <div class = "org" >
-      <center><h2>Title: {{title}}</h2>  
+        <center>
+      <h2>Title: {{title}}</h2>  
       <p> Host: {{host}}</p>
       <p>Organization: {{org}}</p>
       <p>Date of Event: {{ date}}</p>
@@ -10,7 +12,8 @@
       <p>End: {{ end }}</p>
       <p>Description: {{description}}</p>
      <strong> <p>Hours Received: {{hoursReceived}}</p></strong>
-      </center> 
+     <button><a href="/orgs/delete/{{id}}" class="a" > Delete Event </a></button>
+      </center>
     </div>
     {{/each}}
 </section>
