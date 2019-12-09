@@ -6,7 +6,7 @@ const Student = require('../models').Student;
 const Post = require('../models').Post;
 const StudentOrg = require('../models').StudentOrg;
 const Organization = require('../models').Organization;
-const StudentPost = require('../models/StudentPost').StudentPost;
+const StudentPost = require('../models').StudentPost;
 
 var hbsContent = {id: '' , username: '', email: '', loggedin: false, isOrg: false, isStudent: false, title: "You are not logged in today", body: "Hello World"}; 
 
@@ -289,6 +289,8 @@ Student.findByPk(id,{include: ['post']})
     var p = []
     p = student.post
     console.log(p)
+    
+  //  console.log(p)
         
         res.render('viewEvents',{
             p:p,
@@ -297,6 +299,62 @@ Student.findByPk(id,{include: ['post']})
             //console.log(s)
     })       
 })
+
+
+//This shows a list of orgs for the student
+router.get('/viewOrgs', (req,res) => {
+    var id = hbsContent.id
+    //Get orgs for a given Student
+Student.findByPk(id,{include: ['organization']})
+.then((student) => {
+    var org = []
+    org = student.organization
+    //console.log(org)
+        
+        res.render('viewOrgs',{
+            org:org,
+            isStudent: hbsContent.isStudent,
+            loggedin: hbsContent.loggedin})
+            //console.log(s)
+    })       
+})
+
+
+
+
+//Route to Leave Org (Student)
+router.get('/leave/:orgId' , (req, res) => {
+    var id = req.params.orgId
+   // console.log(id)
+
+   StudentOrg.findOne({ where: { organizationId: id , studentId: hbsContent.id}})
+   .then(function(org){
+       console.log(org)
+        org.destroy()
+        res.render('leave' , hbsContent)
+    
+    })
+
+})
+
+
+//Route to Remove Post (Student)
+router.get('/removeEvent/:postId' , (req, res) => {
+    var id = req.params.postId
+   // console.log(id)
+
+   StudentPost.findOne({ where: { postId: id , studentId: hbsContent.id}})
+   .then(function(post){
+       console.log(post)
+        post.destroy()
+        res.render('deleted' , hbsContent)
+    
+    })
+
+})
+
+
+
 
 router.get('/feedback' , (req,res) =>{
     res.render('feedback', hbsContent)

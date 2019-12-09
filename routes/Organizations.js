@@ -25,14 +25,6 @@ var sessionChecker = (req, res, next) => {
 router.get('/list', (req, res) => 
 //     console.log(hbsContent);    
 Organization.findAll({
-        attributes:{
-            include: [[Sequelize.fn("COUNT",Sequelize.col("posts.id")), "numOfPost"]]
-        },
-        include: [{
-            model: Post ,attributes: []
-        }],
-        group: ['Organization.id']
-      //  include: [Post]
     })
     .then(orgs => {
         console.log(orgs), 

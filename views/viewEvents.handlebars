@@ -1,6 +1,7 @@
 <section>
     <h1>Events Attending</h1>
     {{#each p}}
+    <form action="/students/viewEvents" method="POST">
     <div class = "org">
       <h2>Title: {{title}}</h2>  
       <p> Host: {{host}}</p>
@@ -12,6 +13,8 @@
       <ul>
         <li>Hours Received: {{hoursReceived}}</li>
       </ul>
+      <button><a href="/students/removeEvent/{{id}}" class="a" > Remove Event </a></button>
     </div>
     {{/each}}
+    </form>
 </section>
