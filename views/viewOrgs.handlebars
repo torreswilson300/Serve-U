@@ -1,0 +1,16 @@
+<section id="orgs" class="container">
+  <h1>Organizaions Joined</h1>
+  {{#each org}}
+   <form action="/students /viewOrgs" method="POST">
+    <div class = "org">
+      <h3>{{orgName}}</h3>
+      <p>{{description}}</p>
+      <ul>
+        <li>{{email}}</li>
+        <li>Number of Events: {{numOfPost}}</li>
+      </ul>
+       <button><a href="/students/leave/{{id}}" class="a" > Leave Org </a></button>
+    </div>
+  {{/each}}
+  </form>
+</section>

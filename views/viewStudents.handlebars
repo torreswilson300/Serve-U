@@ -11,16 +11,9 @@
     <ul>
         <button><a href="/orgs/approve/{{id}}" class="a" > Approve Hours </a>  </button>
         <button><a href="/orgs/deny/{{id}}" class="a" >  Deny Hours </a>  </button>
+        <button><a href="/orgs/remove/{{id}}" class="a" > Remove Student </a></button>
         {{!-- <button><a href="/students/v" class="a" >  View </a>  </button> --}}
     </ul>
-
-    <script>
-        function approved(x){
-            x = true
-            alert("isApproved should be true" + {{x}});
-            return x;
-        }
-    </script>
 
     </div>
     {{/each}}
