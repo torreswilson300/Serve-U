@@ -1,0 +1,16 @@
+<section>
+    <h1>Manage Events</h1>
+    {{#each o}}
+    <div class = "org" >
+      <center><h2>Title: {{title}}</h2>  
+      <p> Host: {{host}}</p>
+      <p>Organization: {{org}}</p>
+      <p>Date of Event: {{ date}}</p>
+      <p>Start: {{ start }}</p>
+      <p>End: {{ end }}</p>
+      <p>Description: {{description}}</p>
+     <strong> <p>Hours Received: {{hoursReceived}}</p></strong>
+      </center> 
+    </div>
+    {{/each}}
+</section>

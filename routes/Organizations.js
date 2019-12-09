@@ -268,10 +268,10 @@ router.get('/about' , (req, res) => {
     res.render('about' , hbsContent)})
   
 
-//This shows a list of students for a particular Post
+//This shows a list of students for a particular Org
 router.get('/viewStudents', (req,res) => {
     var id = req.session.user.id
-    //Get students for a given Post
+    //Get students for a given Org
 Organization.findByPk(id,{include: ['student']})
 .then((org) => {
     var o = []
@@ -315,6 +315,29 @@ router.get('/deny/:studId' , (req, res) => {
         res.render('deny' , hbsContent)})
 
     })
+
+
+//This shows a list of events created by the org 
+router.get('/viewEvents', (req,res) => {
+    var id = req.session.user.id
+    //Get posts for a given Org
+Organization.findByPk(id,{include: ['post']})
+.then((org) => {
+    var o = []
+    o = org.post
+    //console.log(o)
+
+        res.render('viewEventsOrg',{
+            o:o,
+            isOrg: hbsContent.isOrg,
+            loggedin: hbsContent.loggedin})
+            //console.log(s)
+    })       
+})
+
+
+
+
 
 //Display Verify Screen
 router.get('/verify', (req, res) => res.render('verify', hbsContent));

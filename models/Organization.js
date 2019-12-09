@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     numOfPost: DataTypes.INTEGER
   }, {});
   Organization.associate = function(models) {
-    Organization.hasMany(models.Post);
+    Organization.hasMany(models.Post, {as: 'post'});
     Organization.hasMany(models.Feedback);
     Organization.belongsToMany(models.Student, {
       through:'studentOrgs',
