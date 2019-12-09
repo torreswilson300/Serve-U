@@ -52,13 +52,6 @@ router.get('/dash', (req,res) => {
 router.get('/listOrgs', (req, res) => 
 //     console.log(hbsContent);    
 Organization.findAll({
-        attributes:{
-            include: [[Sequelize.fn("COUNT",Sequelize.col("posts.id")), "numOfPost"]]
-        },
-        include: [{
-            model: Post ,attributes: []
-        }],
-        group: ['Organization.id']
       //  include: [Post]
     }).then(orgs => {
       //  console.log(hbsContent) 
@@ -188,7 +181,9 @@ router.post('/add', (req,res) => {
 //Get All Events
 router.get('/posts', (req, res) => 
 Post.findAll().then(posts => {
-    //console.log(posts);
+
+  // console.log(posts[0].start);
+
     res.render('joinPost', {
        posts:posts, 
        isStudent: hbsContent.isStudent,
@@ -283,7 +278,9 @@ Post.findByPk(id,{include: ['student']})
     })       
 })
 
-  
+router.get('/feedback' , (req,res) =>{
+    res.render('feedback', hbsContent)
+})
 
 
 
