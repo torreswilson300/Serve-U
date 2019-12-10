@@ -3,7 +3,7 @@
     {{#each o}}
      <form action="/orgs/viewEvents" method="POST">
     <div class = "org" >
-        <center>
+   
       <h2>Title: {{title}}</h2>  
       <p> Host: {{host}}</p>
       <p>Organization: {{org}}</p>
@@ -12,8 +12,10 @@
       <p>End: {{ end }}</p>
       <p>Description: {{description}}</p>
      <strong> <p>Hours Received: {{hoursReceived}}</p></strong>
-     <button><a href="/orgs/delete/{{id}}" class="a" > Delete Event </a></button>
-      </center>
+     <ul>
+    <li> <button><a href="/orgs/delete/{{id}}" class="a" > Delete Event </a></button></li>
+    <li> <button><a href="/orgs/editEvent/{{id}}" class="a" > Edit Event </a></button></li></ul>
+     
     </div>
     {{/each}}
     </form>
