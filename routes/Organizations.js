@@ -362,7 +362,7 @@ router.get('/delete/:postId' , (req, res) => {
 
 })
 
-//Route to Delete Event (Org)
+//Route to Edit Student (Org)
 router.get('/editStudent/:studId' , (req, res) => {
     var id = req.params.studId
    // console.log(id)
@@ -376,7 +376,7 @@ Student.findByPk(id)
 })
 })
 
-// Add a Org
+// Submit Changes
 router.post('/editStudent/:studId', (req,res) => {
     var id = req.params.studId;
     let updated = {}
@@ -397,6 +397,47 @@ router.post('/editStudent/:studId', (req,res) => {
     })  
 })
 
+//Route to Edit Post (Org)
+router.get('/editEvent/:eventId' , (req, res) => {
+    var id = req.params.eventId
+   // console.log(id)
+
+Post.findByPk(id)
+.then((post) => {
+    //console.log(s.lastName)
+    res.render('editEvent', {
+        post:post
+    })
+})
+})
+
+// Submit Event Changes
+router.post('/editEvent/:eventId', (req,res) => {
+    var id = req.params.eventId;
+    let updated = {}
+    updated.title = req.body.title;
+    updated.host = req.body.host;
+    updated.date = req.body.date;
+    updated.start = req.body.start;
+    updated.end = req.body.end;
+    updated.hoursReceived = req.body.hoursReceived;
+    updated.description = req.body.description;
+
+    Post.findByPk(id)
+    .then((pst) =>{
+        //console.log(st)
+        console.log(updated)
+       pst.title = updated.title;
+       pst.host = updated.host 
+        pst.date = updated.date 
+        pst.start = updated.start 
+        pst.end = updated.end 
+        pst.hoursReceived = updated.hoursReceived
+        pst.description = updated.description 
+        pst.save()
+        res.redirect('/orgs/viewStudents')
+    })  
+})
 
 
 

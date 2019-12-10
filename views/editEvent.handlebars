@@ -1,0 +1,44 @@
+{{!-- This the Layout for Creating an Event--}}
+ 
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Edit Event</h1>
+      <form action="/orgs/editEvent/{{post.id}}" method="POST">
+        <div class="input-group">
+          <label for="title">Event Title</label>
+          <input type="text" name="title" id="title" class="input-box"
+            maxlength="100" value={{post.title}}>
+        </div>
+        <div class="input-group">
+          <label for="host">Event Host</label>
+          <input type="text" name="host" id="host" class="input-box"
+          maxlength="100" value={{post.host}}>
+        </div>
+        <div class="input-group">
+          <label for="date">Date</label>
+          <input type="date" name="date" id="date" class="input-box" value={{post.date}}>
+        </div>
+        <div class="input-group">
+          <label for="start">Start Time</label>
+          <input type="time" name="start" id="start" class="input-box" 
+            value={{post.start}}>
+        </div>
+        <div class="input-group">
+          <label for="end">End Time</label>
+          <input type="time" name="end" id="end" class="input-box" 
+            value={{post.end}}>
+        </div>
+        <div class="input-group">
+          <label for="hoursReceived">Hours Received For Attending</label>
+          <input type="number" name="hoursReceived" id="hoursReceived" class="input-box" 
+            value={{post.hoursReceived}}>
+        </div>
+        <div class="input-group">
+          <label for="description">Event Description</label>
+          <textarea name="description" id="description" class="input-box" 
+            rows="10" >{{post.description}}</textarea>
+        </div>
+        <input type="submit" value="submit" class="btn btn-reverse">
+      </form>
+    </div>
+  </section>
