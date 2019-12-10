@@ -362,6 +362,43 @@ router.get('/delete/:postId' , (req, res) => {
 
 })
 
+//Route to Delete Event (Org)
+router.get('/editStudent/:studId' , (req, res) => {
+    var id = req.params.studId
+   // console.log(id)
+
+Student.findByPk(id)
+.then((s) => {
+    //console.log(s.lastName)
+    res.render('editStudent', {
+        s:s
+    })
+})
+})
+
+// Add a Org
+router.post('/editStudent/:studId', (req,res) => {
+    var id = req.params.studId;
+    let updated = {}
+    updated.username = req.body.username;
+    updated.firstName = req.body.firstName;
+    updated.lastName = req.body.lastName;
+    updated.hoursAttempted = req.body.hoursAttempted;
+    updated.hoursCompleted = req.body.hoursCompleted;
+
+    Student.findByPk(id)
+    .then((st) =>{
+        //console.log(st)
+        console.log(updated)
+        st.hoursAttempted = updated.hoursAttempted;
+        st.hoursCompleted = updated.hoursCompleted;
+        st.save()
+        res.redirect('/orgs/viewStudents')
+    })  
+})
+
+
+
 
 
 
