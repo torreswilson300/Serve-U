@@ -345,9 +345,13 @@ router.get('/removeEvent/:postId' , (req, res) => {
 
    StudentPost.findOne({ where: { postId: id , studentId: hbsContent.id}})
    .then(function(post){
-       console.log(post)
-        post.destroy()
-        res.render('deleted' , hbsContent)
+       Post.findOne({where:{id: postId}})
+       .then((p) => {
+           console.log(p)
+       })
+      // console.log(post)
+        // post.destroy()
+        // res.render('deleted' , hbsContent)
     
     })
 
