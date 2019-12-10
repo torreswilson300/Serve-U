@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "Pr0T3chTioN!?",
+    "password": "icecream2@W",
     "database": "serveu",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql",
     "operatorsAliases": false
   },
