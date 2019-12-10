@@ -1,0 +1,83 @@
+***Create serveu schema*****
+CREATE DATABASE `serveu` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+****Create Student*********
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `firstName` varchar(255) DEFAULT NULL,
+  `lastName` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `hoursCompleted` int(11) DEFAULT '0',
+  `hoursAttempted` int(11) DEFAULT '0',
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+****Create Organization******
+CREATE TABLE `organizations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `orgName` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `numOfMembers` int(11) DEFAULT '0',
+  `numOfPost` int(11) DEFAULT '0',
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+****Create Post******
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `host` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `start` time DEFAULT NULL,
+  `end` time DEFAULT NULL,
+  `hoursReceived` int(11) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `org` varchar(255) DEFAULT NULL,
+  `organizationId` int(11) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `posts_ibfk_1` (`organizationId`),
+  CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`organizationId`) REFERENCES `organizations` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+****Create StudentOrg******
+CREATE TABLE `studentorgs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `studentId` int(11) DEFAULT NULL,
+  `organizationId` int(11) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `studentId` (`studentId`,`organizationId`),
+  KEY `studentorgs_ibfk_2` (`organizationId`),
+  CONSTRAINT `studentorgs_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `students` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `studentorgs_ibfk_2` FOREIGN KEY (`organizationId`) REFERENCES `organizations` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+
+****Create StudentPost*****
+CREATE TABLE `studentposts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `studentId` int(11) DEFAULT NULL,
+  `postId` int(11) DEFAULT NULL,
+  `hours` int(11) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `studentposts_ibfk_2` (`postId`),
+  KEY `studentposts_ibfk_1` (`studentId`),
+  CONSTRAINT `studentposts_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `students` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `studentposts_ibfk_2` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+
+
