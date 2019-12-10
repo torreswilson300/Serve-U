@@ -1,0 +1,29 @@
+{{!-- This the Layout for the Student Sign-Up Page--}}
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Edit Student</h1>
+      <form action="/orgs/editStudent/{{s.id}}" method="POST">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" class="input-box" value={{s.username}}>
+        </div>
+        <div class="input-group">
+          <label for="firstName">First Name</label>
+          <input type="text" name="firstName" id="firstName" class="input-box" value={{s.firstName}}>
+        </div>
+        <div class="input-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" name="lastName" id="lastName"  class="input-box" value={{s.lastName}}>
+        </div>
+        <div class="input-group">
+          <label for="hoursAttempted">Hours Attempted</label>
+          <input type= "number" name="hoursAttempted" class="input-box" value={{s.hoursAttempted}}>
+        </div>
+        <div class="input-group">
+          <label for="hoursCompleted">Hours Completed</label>
+          <input type= "number" name="hoursCompleted" class="input-box" value={{s.hoursCompleted}}>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-reverse">
+      </form>
+    </div>
+  </section>

@@ -346,12 +346,26 @@ router.get('/removeEvent/:postId' , (req, res) => {
 
    StudentPost.findOne({ where: { postId: id , studentId: hbsContent.id}})
    .then(function(post){
-       console.log(post)
-        post.destroy()
-        res.render('deleted' , hbsContent)
-    
-    })
+       Post.findOne({where:{id: id}})
+       .then((p) => {
+           console.log(p.hoursReceived)
+        Student.findOne({where:{id:hbsContent.id}}).then((s) => {
+            console.log(s)
+            if(s.hoursAttempted >= p.hoursReceived){
+                s.hoursAttempted = s.hoursAttempted - p.hoursReceived
+                s.save()
+                console.log("hours removed")          
+            }
+            else
+                console.log("event removed")
 
+        })
+
+        p.destroy()
+        res.render('remove' , hbsContent)
+        
+       })
+    })
 })
 
 
