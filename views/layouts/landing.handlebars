@@ -14,36 +14,23 @@
 </head>
 
 <body>
-  <header>
-    <h2><a href="/"></i>
-        ServeU</a></h2>
-    <nav>
-<ul class = "nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/students/about">About</a></li> 
-        {{# if isOrg}}
-        <li><a href="/orgs/dash">Dashboard</a></li>
-        <li><a href="/orgs/list">All Orgs</a></li>
-        <li><a href="/orgs/post">Create Post</a></li>
-        <li> <a href="/orgs/posts">Events</a></li> 
-        <li><a href="/orgs/logout">Logout</a></li>
-        {{else}}
-        {{# if isStudent}}
-        <li><a href="/students/posts">Events(student)</a></li> 
-        <li><a href="/students/dash">Student Dashboard</a></li>
-        <li><a href="/students/logout">Logout</a></li>
-        {{else}}
-        <li><a href="/orgs/add">Register Org</a></li>        
-        <li><a href="/students/add">Register Student</a></li> 
-        <li><a href="/students/login">Student Login</a></li>   
-        <li><a href="/orgs/login">Org Login</a></li> 
-        {{/if}}
-        {{/if}}
-      </ul>
-
-    </nav>
+  <header>    
+    {{# if isOrg}}
+     <h2><a href="/orgs/dash"></i> ServeU</a></h2>
+    {{> org}}
+    {{else}}
+    {{# if isStudent}}
+     <h2><a href="/students/dash"></i> ServeU</a></h2>
+    {{> student}}
+    {{else}}
+     <h2><a href="/"></i> ServeU</a></h2>
+    {{> default}}
+    {{/if}}
+    {{/if}}
   </header>
+  
     {{{body}}}
+  
 </body>
 
 </html>

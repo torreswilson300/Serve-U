@@ -1,11 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const studentOrg = sequelize.define('studentOrg', {
+  const StudentOrg = sequelize.define('StudentOrg', {
     studentId: DataTypes.INTEGER,
     organizationId: DataTypes.INTEGER
   }, {});
-  studentOrg.associate = function(models) {
+  StudentOrg.associate = function(models) {
     // associations can be defined here
+    StudentOrg.belongsTo(models.Organization, {foreignKey: 'organizationId'});
+    StudentOrg.belongsTo(models.Student, {foreignKey: 'studentId'});
   };
-  return studentOrg;
+  return StudentOrg;
 };

@@ -28,9 +28,26 @@ a {
   text-decoration: none;
 }
 
+.a {
+  color: rgb(0, 0, 0);
+}
+
 a:hover {
   color: var(--primary-color);
 }
+
+
+
+q {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+q:hover {
+  color: var(--primary-color);
+}
+
+
 
 .container {
   max-width: 960px;
@@ -43,6 +60,10 @@ a:hover {
   padding: 5px;
   border: #777 dotted 1px;
   margin-bottom: 15px;
+}
+
+.tweet{
+  margin-right: 10px;
 }
 
 /* Header */
@@ -94,6 +115,7 @@ header.inner {
 .btn-reverse {
   background: var(--primary-color);
   border: 1px solid var(--primary-color);
+  width: 100%;
 }
 
 .btn-reverse:hover {
@@ -261,6 +283,7 @@ label {
     display: block;
     margin-top: 1rem;
     text-align: center;
+    width: 100%;
   }
 
   .form-wrap.reg-form,

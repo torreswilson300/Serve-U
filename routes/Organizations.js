@@ -2,10 +2,12 @@ const Sequelize = require('sequelize');
 const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
+const StudentOrg = require('../models').StudentOrg;
 const Organization = require('../models').Organization;
+const Student = require('../models').Student;
 const Post = require('../models').Post;
 
-var hbsContent = {id: '' , orgName: '', email: '', loggedin: false, isOrg: false, isStudent: false, title: "You are not logged in today", body: "Hello World"}; 
+var hbsContent = {id: '' , orgName: '', email: '', loggedin: false, isOrg: false, isStudent: false, isApproved: false, title: "You are not logged in today", body: "Hello World"}; 
 var count
 
 // middleware function to check for logged-in users
@@ -18,20 +20,11 @@ var sessionChecker = (req, res, next) => {
     }    
 };
 
-router.get('/', (req, res) => res.render('index', {layout: 'landing', hbsContent}));
 
 //Get org list
 router.get('/list', (req, res) => 
 //     console.log(hbsContent);    
 Organization.findAll({
-        attributes:{
-            include: [[Sequelize.fn("COUNT",Sequelize.col("posts.id")), "numOfPost"]]
-        },
-        include: [{
-            model: Post ,attributes: []
-        }],
-        group: ['Organization.id']
-      //  include: [Post]
     })
     .then(orgs => {
         console.log(orgs), 
@@ -52,31 +45,18 @@ router.get('/dash', (req,res) => {
         hbsContent.id = req.session.user.id;
         hbsContent.orgName = req.session.user.orgName;
     }
-    Organization.findAll({
-        where: { email: hbsContent.email},
-        attributes:{
-            include: [[Sequelize.fn("COUNT",Sequelize.col("posts.id")), "numOfPost"]]
-        },
-        include: [{
-            model: Post ,attributes: []
-        }],
-        group: ['Organization.id']
-      //  include: [Post]
-    })
+    Organization.findOne({ where: { email: hbsContent.email}})
     .then(orgs => {
-          console.log(orgs);
-        //  console.log(hbsContent);
-        res.render('dash', {
+        // console.log(orgs);
+        res.render('dash',{
+            orgName: orgs.orgName,
+            email: orgs.email,
+            numOfPost: orgs.numOfPost,
+            description: orgs.description,
             isOrg: hbsContent.isOrg,
-            loggedin: hbsContent.loggedin,
-            orgs:orgs
-            // orgName: orgs.orgName,
-            // description: orgs.description,
-            // email: orgs.email,
-            // numOfPost: orgs.numOfPost
-           
+            loggedin: hbsContent.loggedin
         });
-    })  
+    })   
 
 })
 //Display add Org Form
@@ -113,9 +93,7 @@ router.post('/login', (req,res) => {
                req.session.user = org.dataValues;
                res.redirect('/orgs/dash');
            }
-        })
-        
-
+        })      
 }
 })
 //Display add post form
@@ -168,7 +146,6 @@ router.post('/post', (req,res) => {
         });
     } else {
             //Insert into table
-            var count;
                     Post.create({
                         title, 
                         host, 
@@ -180,14 +157,24 @@ router.post('/post', (req,res) => {
                         org,
                         organizationId
                     })
-                    Organization.numOfPost + 1
-                    .then(res.redirect('/orgs/list'))
-                    .catch(err => console.log(err));      
+                    .then(res.redirect('/orgs/dash'))
+                    .catch(err => console.log(err));
+                
+                    
+        Organization.findOne({
+            where:{ id: req.session.user.id}
+        })
+        .then(o => {
+            o.numOfPost = o.numOfPost + 1
+            o.save()
+           // console.log(o)
+        })
+
+
                 }
-})
-router.put ('/post', (req,res) =>{
 
 })
+
 //Display add Org Form
 router.get('/add', (req, res) => res.render('addOrg'));
 // Add a Org
@@ -243,16 +230,15 @@ router.post('/add', (req,res) => {
 })
 //logout
 router.get('/logout', (req, res) => {
-    if (req.session.user && req.cookies.user_sid) {
-        hbsContent.loggedin = false; 
-        hbsContent.isOrg = false;
-        hbsContent.isStudent = false;
-		hbsContent.title = "You are logged out!"; 
-        res.clearCookie('user_sid');
-		console.log(JSON.stringify(hbsContent)); 
-        res.redirect('/');
-    }
+    hbsContent.loggedin = false; 
+    hbsContent.isOrg = false;
+    hbsContent.isStudent = false;
+    hbsContent.title = "You are logged out!"; 
+    res.clearCookie('user_sid');
+    console.log(JSON.stringify(hbsContent)); 
+    res.redirect('/');
 });
+
 //Get All Events
 router.get('/posts', (req, res) => 
 Post.findAll()
@@ -266,5 +252,156 @@ Post.findAll()
     })
 .catch(err => console.log(err)));
 
+//Route Home
+router.get('/' , (req, res) => {
+    res.render('index' , hbsContent)})
+
+//Route to About Page
+router.get('/about' , (req, res) => {
+    res.render('about' , hbsContent)})
+
+    router.get('/feedback' , (req, res) => {
+        res.render('feedback' , hbsContent)})
+  
+
+//This shows a list of students for a particular Org
+router.get('/viewStudents', (req,res) => {
+    var id = req.session.user.id
+    //Get students for a given Org
+Organization.findByPk(id,{include: ['student']})
+.then((org) => {
+    var o = []
+    o = org.student
+    //console.log(o)
+
+        res.render('viewStudents',{
+            o:o,
+            isApproved: hbsContent.isApproved,
+            isOrg: hbsContent.isOrg,
+            loggedin: hbsContent.loggedin})
+            //console.log(s)
+    })       
+})
+
+//Route to Approve
+router.get('/approve/:studId' , (req, res) => {
+     var id = req.params.studId
+    // console.log(id)
+
+    Student.findOne({ where: { id: id }})
+    .then(function(org){
+        console.log(org)
+        org.hoursCompleted = org.hoursCompleted + org.hoursAttempted;
+        org.hoursAttempted = 0;
+        org.save()
+        console.log(org)
+        res.render('approve' , hbsContent)})
+
+})
+    
+
+router.get('/deny/:studId' , (req, res) => {
+    var id = req.params.studId
+    Student.findOne({ where: { id: id }})
+    .then(function(org){
+        console.log(org)
+        org.hoursAttempted = 0;
+        org.save()
+        console.log(org)
+        res.render('deny' , hbsContent)})
+
+    })
+
+
+//This shows a list of events created by the org 
+router.get('/viewEvents', (req,res) => {
+    var id = req.session.user.id
+    //Get posts for a given Org
+Organization.findByPk(id,{include: ['post']})
+.then((org) => {
+    var o = []
+    o = org.post
+    //console.log(o)
+
+        res.render('viewEventsOrg',{
+            o:o,
+            isOrg: hbsContent.isOrg,
+            loggedin: hbsContent.loggedin})
+            //console.log(s)
+    })       
+})
+
+
+
+//Route to Remove Student (Org)
+router.get('/remove/:studId' , (req, res) => {
+    var id = req.params.studId
+   // console.log(id)
+
+   StudentOrg.findOne({ where: { studentId: id , organizationId: hbsContent.id}})
+   .then(function(student){
+       console.log(student)
+        student.destroy()
+        res.render('deleted' , hbsContent)
+    
+    })
+
+})
+
+
+//Route to Delete Event (Org)
+router.get('/delete/:postId' , (req, res) => {
+    var id = req.params.postId
+   // console.log(id)
+
+   Post.findOne({ where: { id: id , organizationId: hbsContent.id}})
+   .then(function(post){
+       console.log(post)
+        post.destroy()
+        res.render('remove' , hbsContent)})
+
+})
+
+
+
+
+
+//Display Verify Screen
+router.get('/verify', (req, res) => res.render('verify', hbsContent));
+//Verify user
+router.post('/verify', (req,res) => {
+
+    let {email, password} = req.body;
+    let errors = [];
+
+    // Validate Fields
+    if(!email) {
+        errors.push({ text: 'Please enter a Email'})
+    }
+    if(!password) {
+        errors.push({ text: 'Please enter a Password'})
+    }
+
+    //Check for Errors
+    if(errors.length > 0){
+        res.render('verify', {
+            errors,
+            email, 
+            password, 
+        });
+    } else{
+        Organization.findOne({ where: { email: email}})
+        .then(function(org){
+           if(!org){
+               res.redirect('/verify');
+           } else if (!org.validPassword(password)){
+               res.redirect('/verify');
+           } else {
+               req.session.user = org.dataValues;
+               res.redirect('/orgs/viewStudents');
+           }
+        })      
+}
+})
 
 module.exports = router;

@@ -1,0 +1,21 @@
+<section>
+    <h1>Manage Students </h1>
+    {{#each o}}
+     <form action="/orgs/viewStudents" method="POST">
+    <div class = "org">
+      <h3><strong>{{firstName}} {{lastName}}</strong> </h3>
+      <p>Username: {{username}} </p>
+      <p>Email: {{email}}</p>
+      <p>Hours Attempted: {{hoursAttempted}} </p>
+      <p>Hours Completed:{{hoursCompleted}}</p>
+    <ul>
+        <button><a href="/orgs/approve/{{id}}" class="a" > Approve Hours </a>  </button>
+        <button><a href="/orgs/deny/{{id}}" class="a" >  Deny Hours </a>  </button>
+        <button><a href="/orgs/remove/{{id}}" class="a" > Remove Student </a></button>
+        {{!-- <button><a href="/students/v" class="a" >  View </a>  </button> --}}
+    </ul>
+
+    </div>
+    {{/each}}
+    </form>
+</section>

@@ -1,21 +1,25 @@
 {{!-- Layout for Events (Student View) --}}
 <section id="orgs" class="container">
-  <form action="/students/post" method="POST">
   <h1>Events</h1>
+  <h3>Select 1 or more events to attend</h3>
   {{#each posts}}
+  <form action="/students/posts" method="POST">
     <div class = "org">
-      <h2>Title: {{title}}</h2>
+      <h2> <input type="checkbox" name="postId" value="{{id}}"> Title: {{title}}</h2>  
       <p> Host: {{host}}</p>
       <p>Organization: {{org}}</p>
-      <p>Date of Event: {{ date }}</p>
+      <p>Date of Event: {{ date}}</p>
       <p>Start: {{ start }}</p>
       <p>End: {{ end }}</p>
       <p>Description: {{description}}</p>
       <ul>
         <li>Hours Received: {{hoursReceived}}</li>
       </ul>
-         <button> Join Event </button> <button> Share </button>  
-    </form>
+      <ul>
+          <li><button> <input type="submit" value="Attend Event"> </button></li> 
+          <li><button><a href="/students/view/{{id}}" class="a" >  View </a>  </button> </button></li>
+    </ul>
     </div>
   {{/each}}
+  </form>
 </section>

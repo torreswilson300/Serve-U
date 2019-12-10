@@ -14,12 +14,19 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Student.associate = function(models) {
     // associations can be defined here
+    Student.hasMany(models.Feedback);
     Student.belongsToMany(models.Organization, {
     through:'studentOrgs',
     foreignKey: 'studentId',
-    as: 'organization'
-  });
+    as: 'organization'}),
+
+    Student.belongsToMany(models.Post, {
+      through:'studentPosts',
+      foreignKey: 'studentId',
+      as: 'post'
+  })
   };
+
   Student.beforeCreate((student, options) => {
     const salt = bcrypt.genSaltSync();
     student.password = bcrypt.hashSync(student.password, salt);
